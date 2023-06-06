@@ -1,0 +1,43 @@
+.fact-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: black;
+}
+
+.fact-display {
+  display: flex;
+  width: 80%;
+  color: white;
+}
+
+.fact,
+.fact-img {
+  width: 50%;
+  height: 40em;
+  margin: 0;
+}
+
+.fact-img {
+  object-fit: cover;
+}
+
+.button-container {
+  display: flex;
+  background-color: pink;
+  justify-content: space-evenly;
+  width: 100%;
+  height: 10em;
+}
+
+.fav-card-btn,
+.new-fact-btn {
+  cursor: pointer;
+  border-radius: 10px;
+  width: 15%;
+  height: 40%;
+  background-color: #64c79f;
+  border: 0;
+  color: black;
+  margin-top: 4em;
+}
