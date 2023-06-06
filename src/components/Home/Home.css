@@ -1,3 +1,7 @@
+.hero {
+  height: 45em;
+}
+
 .hero-img {
   position: relative;
   width: 100%;

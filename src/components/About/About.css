@@ -1,0 +1,9 @@
+.about-box {
+  display: flex;
+  background-color: pink;
+}
+
+.title-box,
+.how-box {
+  width: 50%;
+}

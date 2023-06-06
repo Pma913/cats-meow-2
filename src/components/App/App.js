@@ -17,9 +17,9 @@ class App extends Component {
       <main>
         <Header />
         <Home />
-        <h1>route facts comp here</h1>
-        <h1>route favorites comp here</h1>
-        <h1>route error comp here</h1>
+        {/* {route facts comp here}
+        {route favorites comp here}
+        {route error comp here} */}
       </main>
     )
   }
