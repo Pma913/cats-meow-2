@@ -10,8 +10,13 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-
+      currentFact: {},
+      favorites: []
     }
+  }
+
+  getFact = (fact, id) => {
+    this.setState({ currentFact: {fact: fact, id: id}, favorites: this.state.favorites })
   }
 
   render = () => {
@@ -19,10 +24,10 @@ class App extends Component {
       <main>
         <Header />
         <Route exact path="/" render={() => {
-        return <Home />
+        return <Home getFact={this.getFact}/>
         }} />
         <Route exact path="/fact" render={() => {
-          return <Fact />
+          return <Fact randFact={this.state.currentFact.fact}/>
         }} />
         {/* {route facts comp here}
         {route favorites comp here}

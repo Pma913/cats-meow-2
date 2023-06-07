@@ -9,6 +9,7 @@
   display: flex;
   width: 80%;
   color: white;
+  align-items: center;
 }
 
 .fact,
@@ -16,6 +17,15 @@
   width: 50%;
   height: 40em;
   margin: 0;
+}
+
+.fact {
+  padding: 0 1em 1em;
+  font-size: large;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  text-align: justify;
 }
 
 .fact-img {
