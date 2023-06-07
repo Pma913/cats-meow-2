@@ -2,11 +2,11 @@ import React from 'react';
 import './Favorites.css';
 import Card from '../Card/Card';
 
-const Favorites = ({ savedFacts }) => {
-  const savedCards = savedFacts.map(fact => {
+const Favorites = ({ favs }) => {
+  const savedCards = favs.map(fact => {
     return <Card 
-      description={fact.description}
-      img={fact.img}
+      description={fact.fact}
+      // img={fact.img}
       key={fact.id}
     />
   })

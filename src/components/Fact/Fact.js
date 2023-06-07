@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './Fact.css';
+import getCatFacts from '../../utilities/api-call';
 
 class Fact extends Component {
   constructor() {
@@ -23,8 +24,17 @@ class Fact extends Component {
           alt="Cat with butterfly on nose" />
         </div>
         <div className="button-container">
-          <button className="fav-card-btn">Favorite</button>
-          <button className="new-fact-btn">New Fact</button>
+          <button className="fav-card-btn" onClick={() => {
+            this.props.favFact()
+          }}>Favorite</button>
+
+          <button className="new-fact-btn" onClick={() => {
+            getCatFacts('https://catfact.ninja/fact')
+          .then(data => {
+            const id = Date.now()
+            this.props.getFact(data.fact,  id)
+          })
+          }}>New Fact</button>
         </div>
       </section>
     )
