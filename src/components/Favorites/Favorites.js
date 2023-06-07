@@ -11,7 +11,7 @@ const Favorites = ({ favs }) => {
     />
   })
   return (
-    <section>
+    <section className="fav-card-display">
       {savedCards}
     </section>
   );

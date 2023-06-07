@@ -1,0 +1,6 @@
+.fav-card-display {
+  height: 50em;
+  background-color: salmon;
+  display: flex;
+  flex-wrap: wrap;
+}

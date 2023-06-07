@@ -18,7 +18,7 @@ const Home = ({ getFact }) => {
             getFact(data.fact,  id)
           })
         }}>Get Cat Facts</button></Link>
-        <button className="fav-btn">Get Favorites</button>
+        <Link to="/favorites"><button className="fav-btn">Get Favorites</button></Link>
       </div>
       <div>
         <About />
