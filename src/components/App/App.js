@@ -12,17 +12,32 @@ class App extends Component {
     super();
     this.state = {
       currentFact: {},
-      favorites: []
+      favorites: JSON.parse(sessionStorage.getItem('allFavorites')) || []
     }
   }
 
   getFact = (fact, id) => {
-    this.setState({ currentFact: {fact: fact, id: id}, favorites: this.state.favorites });
+    this.setState({
+      currentFact: {fact: fact, id: id}, favorites: this.state.favorites
+      });
   }
 
   favoriteFact = () => {
-    this.setState({ favorites: [...this.state.favorites, this.state.currentFact] })
-    console.log(this.state, 'app state')
+    this.setState({
+        favorites: [...this.state.favorites, this.state.currentFact]
+      }, () => {
+        sessionStorage.setItem('allFavorites', JSON.stringify(this.state.favorites))
+      });
+  }
+
+  removeFav = (id) => {
+    sessionStorage.removeItem('allFavorites')
+    const newFavs = this.state.favorites.filter(fact => fact.id !== id)
+     this.setState({
+        favorites: newFavs
+      }, () => {
+        sessionStorage.setItem('allFavorites', JSON.stringify(this.state.favorites))
+      });
   }
 
   render = () => {
@@ -36,7 +51,7 @@ class App extends Component {
           return <Fact favFact={this.favoriteFact} getFact={this.getFact} randFact={this.state.currentFact.fact}/>
         }} />
         <Route exact path="/favorites" render={() => {
-          return <Favorites favs={this.state.favorites}/>
+          return <Favorites removeFav={this.removeFav} favs={this.state.favorites}/>
         }} />
         {/* 
         {route favorites comp here}
