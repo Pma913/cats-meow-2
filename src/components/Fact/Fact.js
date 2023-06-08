@@ -31,9 +31,11 @@ class Fact extends Component {
           <button className="new-fact-btn" onClick={() => {
             getCatFacts('https://catfact.ninja/fact')
           .then(data => {
+            console.log(data,"fetch in Fact component")
             const id = Date.now()
             this.props.getFact(data.fact,  id)
           })
+          .catch(err => this.props.getFact(err))
           }}>New Fact</button>
         </div>
       </section>
