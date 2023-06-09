@@ -33,3 +33,7 @@ const Home = ({ getFact }) => {
 };
 
 export default Home;
+
+Home.propTypes = {
+  getFact: PropTypes.func.isRequired
+}
