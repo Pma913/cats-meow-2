@@ -35,5 +35,10 @@ const Fact = ({ randFact, favFact, getFact }) => {
   )
 };
 
-
 export default Fact;
+
+Fact.propTypes = {
+  randFact: PropTypes.string,
+  favFact: PropTypes.func.isRequired,
+  getFact: PropTypes.func.isRequired
+}
