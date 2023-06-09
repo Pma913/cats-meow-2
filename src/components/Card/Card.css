@@ -1,0 +1,23 @@
+.fav-card {
+  display: flex;
+  width: 18%;
+  border: solid 5px black;
+  border-radius: 10px;
+  background-color: #ff9c00;
+  color: black;
+  font-weight: 700;
+  text-align: center;
+  padding: 5px;
+  margin: 10px;
+  height: 10em;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.fav-card-fact {
+  overflow: scroll;
+}
+
+.delete-btn {
+  cursor: pointer;
+}
