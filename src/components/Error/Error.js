@@ -14,3 +14,8 @@ const Error = ({ err, removeErr }) => {
 }
 
 export default Error;
+
+Error.propTypes = {
+  err: PropTypes.string.isRequired,
+  removeErr: PropTypes.func.isRequired
+}
