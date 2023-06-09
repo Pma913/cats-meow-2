@@ -13,10 +13,10 @@ describe('visiting the fact page', () => {
   it('should have two buttons', () => {
     cy.visit('http://localhost:3000/fact')
     cy.get('button[class=fav-card-btn]')
-    cy.get('button[class=new-fact-btn]')
+    cy.get('button[class=new-fact-btn]').should('be.visible')
   })
 
-  it('should display error if there it does not get fact and provide a path back home', () => {
+  it('should display error when ther is no fact generated and provide a path back home', () => {
     cy.intercept('https://catfact.ninja/fact', (res) => res.destroy())
     cy.visit('http://localhost:3000/fact')
     cy.get('button[class=new-fact-btn]').click()
