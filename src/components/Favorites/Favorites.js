@@ -11,9 +11,12 @@ const Favorites = ({ favs, removeFav }) => {
       removeFav={removeFav}
     />
   })
+    
   return (
     <section className="fav-card-display">
-      {savedCards}
+      {!savedCards.length ? 
+      <h2 className="no-ideas">No saved ideas yet</h2> :
+      savedCards}
     </section>
   );
 };
