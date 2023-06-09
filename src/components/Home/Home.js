@@ -14,11 +14,13 @@ const Home = ({ getFact }) => {
         <Link to="/fact"><button className="fact-btn" onClick={() => {
           getCatFacts('https://catfact.ninja/fact')
           .then(data => {
-            console.log(data, 'fetch in Home component')
-            const id = Date.now()
-            getFact(data.fact,  id)
+            const id = Date.now();
+            getFact(data.fact,  id);
           })
-          .catch(err => getFact(err))
+          .catch(err => {
+            getFact(err);
+            console.log(err.message);
+          })
         }}>Get Cat Facts</button></Link>
         <Link to="/favorites"><button className="fav-btn">Get Favorites</button></Link>
       </div>
