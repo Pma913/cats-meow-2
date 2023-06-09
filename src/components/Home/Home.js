@@ -3,6 +3,7 @@ import './Home.css';
 import About from '../About/About'
 import { Link } from 'react-router-dom';
 import getCatFacts from '../../utilities/api-call';
+import PropTypes from 'prop-types'; 
 
 const Home = ({ getFact }) => {
   return (

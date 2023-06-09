@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './Fact.css';
 import getCatFacts from '../../utilities/api-call';
+import PropTypes from 'prop-types'; 
 
 class Fact extends Component {
   constructor() {
