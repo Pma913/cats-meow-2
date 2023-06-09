@@ -23,6 +23,6 @@ describe('favorites page', () => {
     cy.get('div[class=nav-links]').children().next().next().click()
     cy.get('div[class=fav-card]').should('have.length', 1)
     cy.get('button[class=delete-btn]:first').click()
-    cy.get('section[class=fav-card-display]').children().should('have.length', 0)
+    cy.get('section[class=fav-card-display]').contains('No saved ideas yet')
   })
 })

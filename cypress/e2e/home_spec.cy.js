@@ -9,14 +9,14 @@ describe('visit home page', () => {
   })
 
   it('should have a hero image and two buttons to choose from', () => {
-    cy.get('img[class=hero-img]')
+    cy.get('img[class=hero-img]').should('be.visible')
     cy.get('button[class=fact-btn]').contains('Get Cat Facts')
     cy.get('button[class=fav-btn]').contains('Get Favorites')
   })
 
   it('should have an about section that describes application', () => {
-    cy.get('section[class=about-box')
-    cy.get('h2[class=about-title').contains('About Cats Meow')
+    cy.get('section[class=about-box]')
+    cy.get('h2[class=about-title]').contains('About Cats Meow')
     cy.get('p[class=about-description]').contains('The app that is all about the cat.')
     cy.get('h3[class=how-title]').contains('How do I Cats Meow?')
     cy.get('li:first').contains('Click the "Get Cat Facts" button')
