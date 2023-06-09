@@ -1,5 +1,6 @@
 import React from 'react';
 import './Card.css';
+import PropTypes from 'prop-types'; 
 
 const Card = ({ description, removeFav, id }) => {
   return (
@@ -13,3 +14,9 @@ const Card = ({ description, removeFav, id }) => {
 };
 
 export default Card;
+
+Card.propTypes = {
+  description: PropTypes.string.isRequired,
+  removeFav: PropTypes.func.isRequired,
+  id: PropTypes.number.isRequired
+}

@@ -1,6 +1,7 @@
 import React from 'react';
 import './Favorites.css';
 import Card from '../Card/Card';
+import PropTypes from 'prop-types'; 
 
 const Favorites = ({ favs, removeFav }) => {
   const savedCards = favs.map(fact => {
@@ -22,3 +23,8 @@ const Favorites = ({ favs, removeFav }) => {
 };
 
 export default Favorites;
+
+Favorites.propTypes = {
+  favs: PropTypes.array.isRequired,
+  removeFav: PropTypes.func.isRequired
+}
