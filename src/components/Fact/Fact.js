@@ -7,7 +7,7 @@ const Fact = ({ randFact, favFact, getFact }) => {
   return (
     <section className="fact-page">
       <div className="fact-display">
-        <p className="fact">{randFact}</p>
+        <p className="fact">{randFact ?? "> Click the New Fact button to view a cat fact <"}</p>
         <img className="fact-img" src="https://images.unsplash.com/photo-1526336024174-e58f5cdd8e13?ixlib
         =rb-4.0.3&ixid
         =M3wxMjA3fDB8MHxzZWFyY2h8MTJ8fGNhdHN8ZW58MHx8MHx

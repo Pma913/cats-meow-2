@@ -59,7 +59,7 @@ class App extends Component {
     } else {
       return (
         <main>
-          <Header />
+          <Header getFact={this.getFact}/>
           <Route exact path="/" render={() => {
             return <Home getFact={this.getFact}/>
           }} />
