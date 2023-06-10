@@ -10,13 +10,13 @@
 
 .title-box {
   border-right: solid black 1px;
+  text-align: center;
 }
 
 .how-box {
   border-left: solid black 1px;
 }
 
-.about-title,
 .how-title {
   text-align: center;
 }
