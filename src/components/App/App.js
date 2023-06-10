@@ -11,7 +11,7 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      currentFact: {},
+      currentFact: JSON.parse(sessionStorage.getItem('currentFact')) || {},
       favorites: JSON.parse(sessionStorage.getItem('allFavorites')) || [],
       err: ''
     }
@@ -23,7 +23,9 @@ class App extends Component {
     } else {
       this.setState({
         currentFact: {fact: fact, id: id}, favorites: this.state.favorites
-      });
+      }, () => {
+        sessionStorage.setItem('currentFact', JSON.stringify(this.state.currentFact))
+    });
     }
   }
 
