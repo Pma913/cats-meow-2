@@ -40,11 +40,32 @@
 } 
 
 @media (max-width: 750px) {
+  .fact-btn,
+  .fav-btn {
+    position: absolute;
+    bottom: 5px;
+    height: 25px;
+  }
+
   .fact-btn {
-    right: 20%;
+  right: 5%;
+  
   }
 
   .fav-btn {
-  left: 20%;
-  }
+    left: 5%;
+  }  
+
+  .hero-img,
+  .hero {
+    height: 27em;
+    position: relative;
+  }  
+}
+
+@media (max-width: 584px) {
+  .hero-img,
+  .hero {
+    height: 15em;
+  } 
 }
