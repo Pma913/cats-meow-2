@@ -25,15 +25,20 @@ describe('visiting the fact page', () => {
     cy.get('h1').contains('Cats Meow')
   })
 
-  it('should display instructional text if page reloads and when visits facts page directly via url', () => {
+  it('should display instructional text when visits facts page directly via url', () => {
     cy.visit('http://localhost:3000/fact')
     cy.get('p[class=fact]').contains('> Click the New Fact button to view a cat fact <')
+  })
+
+  it('should maintain fact display over page refresh', () => {
+    cy.visit('http://localhost:3000/fact')
     cy.intercept('https://catfact.ninja/fact', {
       status: 200,
       fixture: 'cat-facts'
     })
     cy.get('button[class=new-fact-btn]').click()
+    cy.get('p').contains('Cats can see like wicked good')
     cy.reload()
-    cy.get('p[class=fact]').contains('> Click the New Fact button to view a cat fact <')
+    cy.get('p').contains('Cats can see like wicked good')
   })
 })
