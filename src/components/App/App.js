@@ -28,11 +28,15 @@ class App extends Component {
   }
 
   favoriteFact = () => {
-    this.setState({
+    const noDuplicate = this.state.favorites.every(fact => fact.id !== this.state.currentFact.id)
+    
+    if (noDuplicate) {
+      this.setState({
         favorites: [...this.state.favorites, this.state.currentFact]
       }, () => {
         sessionStorage.setItem('allFavorites', JSON.stringify(this.state.favorites))
       });
+    }
   }
 
   removeFav = (id) => {
