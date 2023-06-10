@@ -21,3 +21,9 @@
 .delete-btn {
   cursor: pointer;
 }
+
+@media (max-width: 900px) {
+  .fav-card {
+    width: 30%;
+  }
+}

@@ -31,3 +31,20 @@
 .fav-btn {
   left: 30%;
 }
+
+@media (max-width: 847px) {
+  .fact-btn,
+  .fav-btn {
+    width: 115px;
+  }
+} 
+
+@media (max-width: 750px) {
+  .fact-btn {
+    right: 20%;
+  }
+
+  .fav-btn {
+  left: 20%;
+  }
+}
