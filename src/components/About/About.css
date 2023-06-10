@@ -7,3 +7,37 @@
 .how-box {
   width: 50%;
 }
+
+.title-box {
+  border-right: solid black 1px;
+}
+
+.how-box {
+  border-left: solid black 1px;
+}
+
+.about-title,
+.how-title {
+  text-align: center;
+}
+
+@media (max-width: 600px) {
+  .about-box {
+    flex-direction: column;
+  }
+
+  .title-box {
+    border-bottom: solid black 1px;
+    border-right: 0
+  }
+
+  .how-box {
+    border-top: solid black 1px;
+    border-left: 0;
+  }
+
+  .title-box,
+  .how-box {
+    width: 100%;
+  }
+}

@@ -58,4 +58,17 @@
   .fact-img {
     height: 27em;
   }
+
+  .fact-img {
+    width: 100%;
+  }
+
+  .fact-display{
+    flex-direction: column;
+  }
+
+  .fav-card-btn,
+  .new-fact-btn {
+    width: 35%;
+  }
 }
