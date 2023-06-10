@@ -30,7 +30,7 @@ class App extends Component {
   }
 
   favoriteFact = () => {
-    const noDuplicate = this.state.favorites.every(fact => fact.id !== this.state.currentFact.id)
+    const noDuplicate = this.state.favorites.every(fact => fact.fact !== this.state.currentFact.fact)
     
     if (noDuplicate) {
       this.setState({
