@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import Home from '../Home/Home';
 import Header from '../Header/Header';
 import Fact from '../Fact/Fact';
-import { Route } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 import Favorites from '../Favorites/Favorites';
 import Error from '../Error/Error';
 
@@ -59,16 +59,19 @@ class App extends Component {
     } else {
       return (
         <main>
-          <Header />
-          <Route exact path="/" render={() => {
-            return <Home getFact={this.getFact}/>
-          }} />
-          <Route exact path="/fact" render={() => {
-            return <Fact favFact={this.favoriteFact} getFact={this.getFact} randFact={this.state.currentFact.fact}/>
-          }} />
-          <Route exact path="/favorites" render={() => {
-            return <Favorites removeFav={this.removeFav} favs={this.state.favorites}/>
-          }} />
+          <Header getFact={this.getFact}/>
+          <Switch>
+            <Route exact path="/" render={() => {
+              return <Home getFact={this.getFact}/>
+            }} />
+            <Route exact path="/fact" render={() => {
+              return <Fact favFact={this.favoriteFact} getFact={this.getFact} randFact={this.state.currentFact.fact}/>
+            }} />
+            <Route exact path="/favorites" render={() => {
+              return <Favorites removeFav={this.removeFav} favs={this.state.favorites}/>
+            }} />
+            <Route exact path="/*" render={() => <Error removeErr={this.removeErr} err="Page does not exist" />} />
+          </Switch>
         </main>
       )
     }
