@@ -16,3 +16,9 @@
 .link {
   margin: 5px;
 }
+
+@media (max-width: 584px){
+  .app-title {
+    text-align: center;
+  }
+} 

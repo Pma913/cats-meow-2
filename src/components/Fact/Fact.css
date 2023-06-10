@@ -15,7 +15,7 @@
 .fact,
 .fact-img {
   width: 50%;
-  height: 40em;
+  height: 34em;
   margin: 0;
 }
 
@@ -50,4 +50,11 @@
   border: 0;
   color: black;
   margin-top: 4em;
+}
+
+@media (max-width: 1250px) {
+  .fact,
+  .fact-img {
+    height: 27em;
+  }
 }
