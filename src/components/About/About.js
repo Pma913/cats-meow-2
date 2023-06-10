@@ -7,13 +7,8 @@ const About = () => {
       <div className="title-box">
         <h2 className="about-title">About Cats Meow</h2>
         <p className="about-description">The app that is all about the cat. 
-        For those individuals that are just convinced
-        they need to know obscure facts about cats to 
-        make them seem knowledgeable about felines, or simply 
-        you are convinced a random cat fact might get asked
-        at your next trivia night. Regardless of your reason 
-        for being here, I think we can all agree that you are
-        in the right place. 
+        For those individuals that are convinced
+        they need to expand their knowledge about cats and nothing else, welcome and enjoy!
         </p>
       </div>
       <div className="how-box">

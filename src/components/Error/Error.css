@@ -7,3 +7,9 @@
 .error-img {
   width: 65em;
 }
+
+@media (max-width: 847px) {
+  .error-img {
+    width: 100%;
+  }
+}
