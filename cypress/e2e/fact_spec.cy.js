@@ -26,12 +26,12 @@ describe('visiting the fact page', () => {
   })
 
   it('should display instructional text when visits facts page directly via url', () => {
-    cy.visit('http://localhost:3000/fact')
+    cy.visit('https://cats-meow.vercel.app/fact')
     cy.get('p[class=fact]').contains('> Click the New Fact button to view a cat fact <')
   })
 
   it('should maintain fact display over page refresh', () => {
-    cy.visit('http://localhost:3000/fact')
+    cy.visit('https://cats-meow.vercel.app/fact')
     cy.intercept('https://catfact.ninja/fact', {
       status: 200,
       fixture: 'cat-facts'
