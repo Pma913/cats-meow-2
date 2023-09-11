@@ -1,19 +1,19 @@
 .hero {
-  height: 45em;
+  height: 39em;
 }
 
 .hero-img {
   position: relative;
   width: 100%;
   overflow: hidden;
-  height: 45em;
+  height: 39em;
   object-fit: cover;
 }
 
 .fact-btn,
 .fav-btn {
   position: absolute;
-  bottom: 12%;
+  bottom: 22%;
   cursor: pointer;
   border-radius: 10px;
   width: 15%;

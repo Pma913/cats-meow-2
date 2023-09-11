@@ -3,6 +3,10 @@
   background-color: pink;
 }
 
+.how-list {
+  padding-left: 35px;
+}
+
 .title-box,
 .how-box {
   width: 50%;

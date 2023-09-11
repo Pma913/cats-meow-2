@@ -1,21 +1,6 @@
-
-
-  .logo {
-    animation: logo-spin infinite 20s linear;
-  }
-
-
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+html { 
+  height: 100%;
 }
-
-@media (max-width: 584px){
-  .logo {
-    animation: 0;
-  }
-}   
+main {
+  height: 100%;
+}
