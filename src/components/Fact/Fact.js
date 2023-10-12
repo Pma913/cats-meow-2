@@ -2,10 +2,16 @@ import React, {useEffect, useState} from 'react';
 import './Fact.css';
 import getCatFacts from '../../utilities/api-call';
 import PropTypes from 'prop-types'; 
+import { useLoaderData } from 'react-router-dom';
 
 const Fact = ({ favFact }) => {
   const [currentFact, setCurrentFact] = useState(JSON.parse(sessionStorage.getItem('currentFact')) || {});
   const [err, setErr] = useState('');
+
+  const randFact = useLoaderData()
+  randFact.id = Date.now()
+
+  console.log(randFact, 'loaderData')
 
   const setFact = (fact, id) => {
     if (!id) {
@@ -16,19 +22,23 @@ const Fact = ({ favFact }) => {
     }
   }
 
-  useEffect(() => {
-    if (!currentFact) {
-      getCatFacts('https://catfact.ninja/fact')
-        .then(data => {
-          const id = Date.now();
-          setFact(data.fact,  id);
-        })
-        .catch(err => {
-          setFact(err);
-          console.log(err.message);
-        })
-    }
-  },[])
+  const fetchFact = () => {
+    getCatFacts('https://catfact.ninja/fact')
+      .then(data => {
+        const id = Date.now();
+        setFact(data.fact,  id);
+      })
+      .catch(err => {
+        setFact(err);
+        console.log(err.message);
+      })
+  }
+
+  // useEffect(() => {
+  //   if (!currentFact) {
+  //     fetchFact()
+  //   }
+  // },[])
 
 
   return (
@@ -46,23 +56,19 @@ const Fact = ({ favFact }) => {
           favFact(currentFact)
         }}>Favorite</button>
 
-        <button className="new-fact-btn" onClick={() => {
-          getCatFacts('https://catfact.ninja/fact')
-        .then(data => {
-          const id = Date.now();
-          setFact(data.fact,  id);
-        })
-        .catch(err => {
-          setFact(err);
-          console.log(err.message);
-        })
-        }}>New Fact</button>
+        <button className="new-fact-btn" onClick={fetchFact}>New Fact</button>
       </div>
     </section>
   )
 };
 
 export default Fact;
+
+export const factLoader = async () => {
+  const res = await fetch('https://catfact.ninja/fact')
+
+  return res.json()
+}
 
 Fact.propTypes = {
   randFact: PropTypes.string,

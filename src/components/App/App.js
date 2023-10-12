@@ -1,9 +1,9 @@
 import './App.css';
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import Home from '../Home/Home';
 import Header from '../Header/Header';
-import Fact from '../Fact/Fact';
-import { Route, Switch } from 'react-router-dom';
+import Fact, { factLoader } from '../Fact/Fact';
+import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import Favorites from '../Favorites/Favorites';
 import Error from '../Error/Error';
 
@@ -26,10 +26,32 @@ const App = () => {
     setFavorites(newFavs)
     sessionStorage.setItem('allFavorites', JSON.stringify(newFavs))
   }
-
+  
   const removeErr = () => {
     setErr('')
   }
+
+  const router = createBrowserRouter([
+    {
+      path: "/",
+      element: <Home />,
+    },
+    {
+      path: "/fact",
+      element: <Fact favFact={favoriteFact} />,
+      loader: factLoader
+    },
+    {
+      path: "/favorites",
+      element: <Favorites removeFav={removeFav} favs={favorites} />
+    },
+    {
+      path: "/*",
+      element: <Error removeErr={removeErr} err="Page does not exist" /> 
+    }
+    ]
+  )
+
   
     if (err) {
       return (
@@ -39,21 +61,23 @@ const App = () => {
       )
     } else {
       return (
-        <main>
-          <Header />
-          <Switch>
-            <Route exact path="/" render={() => {
-              return <Home />
-            }} />
-            <Route exact path="/fact" render={() => {
-              return <Fact favFact={favoriteFact} />
-            }} />
-            <Route exact path="/favorites" render={() => {
-              return <Favorites removeFav={removeFav} favs={favorites}/>
-            }} />
-            <Route exact path="/*" render={() => <Error removeErr={removeErr} err="Page does not exist" />} />
-          </Switch>
-        </main>
+        // <main>
+        //   <Header />
+        //   <Switch>
+        //     <Route exact path="/" render={() => {
+        //       return <Home />
+        //     }} />
+        //     <Route exact path="/fact" render={() => {
+        //       return <Fact favFact={favoriteFact} />
+        //     }} />
+        //     <Route exact path="/favorites" render={() => {
+        //       return <Favorites removeFav={removeFav} favs={favorites}/>
+        //     }} />
+        //     <Route exact path="/*" render={() => <Error removeErr={removeErr} err="Page does not exist" />} />
+        //   </Switch>
+        // </main>
+        
+        <RouterProvider router={router} />
       )
     }
   
