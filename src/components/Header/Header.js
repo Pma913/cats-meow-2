@@ -1,26 +1,30 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { NavLink, Link } from 'react-router-dom';
 import './Header.css';
-import getCatFacts from '../../utilities/api-call';
+import ham from '../../utilities/hamburg.svg' 
 
-const Header = ({ getFact}) => {
+const Header = () => {
+  const [dropDown, setDropdown] = useState("hidden")
+  const [hamb, setHamb] = useState("")
+
+  const toggleDrop = () => {
+    if (dropDown === "hidden") {
+      setDropdown("")
+      setHamb("hidden")
+    } else {
+      setDropdown("hidden")
+      setHamb("")
+    } 
+  }
+
   return (
     <section className="header">
       <Link to="/"><img className="logo" src="./cats_meow.png" alt="Cute cat"/></Link> 
       <h1 className="app-title">Cats Meow</h1>
-      <div className="nav-links">
+      <img className={`hamburg hidden`} src={ham} alt="ham menu" onClick={toggleDrop}/>
+      <div className={`nav-links `}>
         <NavLink className="link" to="/">home</NavLink>
-        <NavLink className="link" to="/fact" onClick={() => {
-          getCatFacts('https://catfact.ninja/fact')
-        .then(data => {
-          const id = Date.now();
-          getFact(data.fact,  id);
-        })
-        .catch(err => {
-          getFact(err);
-          console.log(err.message);
-        })
-        }}>facts</NavLink>
+        <NavLink className="link" to="/fact">facts</NavLink>
         <NavLink className="link" to="/favorites">favorites</NavLink>
       </div>
     </section>

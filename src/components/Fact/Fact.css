@@ -55,8 +55,21 @@
 
 .new-fact-btn:hover,
 .fav-card-btn:hover {
-  background-color: #1f7855;
+  background-color: #3ba178;
+  border-bottom: solid black 4px;
 }
+
+.new-fact-btn:active,
+.fav-card-btn:active {
+  background-color: #ffffff;
+  border-bottom: 0px;
+}
+
+.new-fact-btn:after,
+.fav-card-btn:after {
+  transition: 0.5s;
+}
+
 
 @media (max-width: 1250px) {
   .fact,

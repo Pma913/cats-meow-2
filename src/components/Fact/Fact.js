@@ -1,13 +1,35 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './Fact.css';
 import getCatFacts from '../../utilities/api-call';
 import PropTypes from 'prop-types'; 
+import { useLoaderData } from 'react-router-dom';
 
-const Fact = ({ randFact, favFact, getFact }) => {
+const Fact = ({ favFact }) => {
+  const [currentFact, setCurrentFact] = useState(JSON.parse(sessionStorage.getItem('currentFact')) || {});
+  const [err, setErr] = useState('');
+
+  const randFact = useLoaderData()
+
+  const setFact = (fact) => {
+    setCurrentFact({fact: fact});
+    sessionStorage.setItem('currentFact', JSON.stringify({fact: fact}))
+  }
+
+  const fetchFact = () => {
+    getCatFacts('https://catfact.ninja/fact')
+      .then(data => {
+        setFact(data.fact);
+      })
+      .catch(err => {
+        setFact(err);
+        console.log(err.message);
+      })
+  }
+
   return (
     <section className="fact-page">
       <div className="fact-display">
-        <p className="fact">{randFact ?? "> Click the New Fact button to view a cat fact <"}</p>
+        <p className="fact">{currentFact.fact || randFact.fact}</p>
         <img className="fact-img" src="https://images.unsplash.com/photo-1526336024174-e58f5cdd8e13?ixlib
         =rb-4.0.3&ixid
         =M3wxMjA3fDB8MHxzZWFyY2h8MTJ8fGNhdHN8ZW58MHx8MHx
@@ -16,20 +38,10 @@ const Fact = ({ randFact, favFact, getFact }) => {
       </div>
       <div className="button-container">
         <button className="fav-card-btn" onClick={() => {
-          favFact()
+          favFact({fact: currentFact.fact || randFact.fact, id: Date.now()})
         }}>Favorite</button>
 
-        <button className="new-fact-btn" onClick={() => {
-          getCatFacts('https://catfact.ninja/fact')
-        .then(data => {
-          const id = Date.now();
-          getFact(data.fact,  id);
-        })
-        .catch(err => {
-          getFact(err);
-          console.log(err.message);
-        })
-        }}>New Fact</button>
+        <button className="new-fact-btn" onClick={fetchFact}>New Fact</button>
       </div>
     </section>
   )
@@ -37,8 +49,13 @@ const Fact = ({ randFact, favFact, getFact }) => {
 
 export default Fact;
 
+export const factLoader = async () => {
+  const res = await fetch('https://catfact.ninja/fact')
+
+  return res.json()
+}
+
 Fact.propTypes = {
   randFact: PropTypes.string,
-  favFact: PropTypes.func.isRequired,
-  getFact: PropTypes.func.isRequired
+  favFact: PropTypes.func.isRequired
 }

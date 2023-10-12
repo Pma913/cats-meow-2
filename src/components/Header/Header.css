@@ -14,7 +14,31 @@
 }
 
 .link {
+  all: unset;
   margin: 5px;
+  font-size: large;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.link:hover {
+  color: rgb(244, 23, 23);
+  background-color: black;
+  border-radius: 2px;
+}
+
+.hamburg {
+  width: 2em;
+  cursor: pointer;
+}
+
+.hidden {
+  display: none;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
 }
 
 @media (max-width: 584px){
