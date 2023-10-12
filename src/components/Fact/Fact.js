@@ -9,25 +9,16 @@ const Fact = ({ favFact }) => {
   const [err, setErr] = useState('');
 
   const randFact = useLoaderData()
-  
-  // setCurrentFact(randFact.fact, Date.now());
 
-  console.log(randFact, 'loaderData')
-
-  const setFact = (fact, id) => {
-    if (!id) {
-      setErr('Looks like there was a problem. Please try again later')
-    } else {
-      setCurrentFact({fact: fact, id: id});
-      sessionStorage.setItem('currentFact', JSON.stringify({fact: fact, id: id}))
-    }
+  const setFact = (fact) => {
+    setCurrentFact({fact: fact});
+    sessionStorage.setItem('currentFact', JSON.stringify({fact: fact}))
   }
 
   const fetchFact = () => {
     getCatFacts('https://catfact.ninja/fact')
       .then(data => {
-        const id = Date.now();
-        setFact(data.fact,  id);
+        setFact(data.fact);
       })
       .catch(err => {
         setFact(err);
@@ -47,7 +38,7 @@ const Fact = ({ favFact }) => {
       </div>
       <div className="button-container">
         <button className="fav-card-btn" onClick={() => {
-          favFact(currentFact)
+          favFact({fact: currentFact.fact || randFact.fact, id: Date.now()})
         }}>Favorite</button>
 
         <button className="new-fact-btn" onClick={fetchFact}>New Fact</button>
