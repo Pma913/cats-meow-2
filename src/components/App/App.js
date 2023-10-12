@@ -1,7 +1,7 @@
 import './App.css';
 import React, { useState } from 'react';
 import Home from '../Home/Home';
-import Header from '../Header/Header';
+// import Header from '../Header/Header';
 import Fact, { factLoader } from '../Fact/Fact';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import Favorites from '../Favorites/Favorites';
