@@ -6,6 +6,7 @@ import Fact, { factLoader } from '../Fact/Fact';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import Favorites from '../Favorites/Favorites';
 import Error from '../Error/Error';
+import RootLayout from '../../utilities/RootLayout';
 
 const App = () => {
   const [favorites, setFavorites] = useState(JSON.parse(sessionStorage.getItem('allFavorites')) || []);
@@ -34,21 +35,28 @@ const App = () => {
   const router = createBrowserRouter([
     {
       path: "/",
-      element: <Home />,
+      element: <RootLayout />,
+      children: [
+        {
+          path: "/",
+          element: <Home />
+        },
+        {
+          path: "/fact",
+          element: <Fact favFact={favoriteFact} />,
+          loader: factLoader
+        },
+        {
+          path: "/favorites",
+          element: <Favorites removeFav={removeFav} favs={favorites} />
+        },
+        {
+          path: "/*",
+          element: <Error removeErr={removeErr} err="Page does not exist" /> 
+        }
+      ]
     },
-    {
-      path: "/fact",
-      element: <Fact favFact={favoriteFact} />,
-      loader: factLoader
-    },
-    {
-      path: "/favorites",
-      element: <Favorites removeFav={removeFav} favs={favorites} />
-    },
-    {
-      path: "/*",
-      element: <Error removeErr={removeErr} err="Page does not exist" /> 
-    }
+    
     ]
   )
 
