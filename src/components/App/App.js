@@ -32,7 +32,7 @@ const App = () => {
     setErr('')
   }
 
-  const router = createBrowserRouter([
+  const routes = createBrowserRouter([
     {
       path: "/",
       element: <RootLayout />,
@@ -69,23 +69,7 @@ const App = () => {
       )
     } else {
       return (
-        // <main>
-        //   <Header />
-        //   <Switch>
-        //     <Route exact path="/" render={() => {
-        //       return <Home />
-        //     }} />
-        //     <Route exact path="/fact" render={() => {
-        //       return <Fact favFact={favoriteFact} />
-        //     }} />
-        //     <Route exact path="/favorites" render={() => {
-        //       return <Favorites removeFav={removeFav} favs={favorites}/>
-        //     }} />
-        //     <Route exact path="/*" render={() => <Error removeErr={removeErr} err="Page does not exist" />} />
-        //   </Switch>
-        // </main>
-        
-        <RouterProvider router={router} />
+        <RouterProvider router={routes} />
       )
     }
   
