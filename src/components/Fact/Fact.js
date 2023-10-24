@@ -6,7 +6,7 @@ import { useLoaderData } from 'react-router-dom';
 
 const Fact = ({ favFact }) => {
   const [currentFact, setCurrentFact] = useState(JSON.parse(sessionStorage.getItem('currentFact')) || {});
-  const [err, setErr] = useState('');
+  // const [err, setErr] = useState('');
 
   const randFact = useLoaderData()
 

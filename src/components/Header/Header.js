@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { NavLink, Link } from 'react-router-dom';
 import './Header.css';
 import ham from '../../utilities/hamburg.svg' 
 
 const Header = () => {
   const [dropDown, setDropdown] = useState("hidden")
-  const [hamb, setHamb] = useState("")
+  // const [hamb, setHamb] = useState("")
 
   const toggleDrop = () => {
     if (dropDown === "hidden") {
