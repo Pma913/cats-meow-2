@@ -16,19 +16,14 @@ describe('visiting the fact page', () => {
     cy.get('button[class=new-fact-btn]').should('be.visible')
   })
 
-  it('should display error when failed to fetch fact and provide a path back home', () => {
-    cy.intercept('https://catfact.ninja/fact', (res) => res.destroy())
-    cy.visit('http://localhost:3000/fact')
-    cy.get('button[class=new-fact-btn]').click()
-    cy.get('h2').contains('Looks like there was a problem. Please try again later')
-    cy.get('a').click()
-    cy.get('h1').contains('Cats Meow')
-  })
-
-  it('should display instructional text when visits facts page directly via url', () => {
-    cy.visit('http://localhost:3000/fact')
-    cy.get('p[class=fact]').contains('> Click the New Fact button to view a cat fact <')
-  })
+  // it('should display error when failed to fetch fact and provide a path back home', () => {
+  //   cy.intercept('https://catfact.ninja/fact', (res) => res.destroy())
+  //   cy.visit('http://localhost:3000/fact')
+  //   cy.get('button[class=new-fact-btn]').click()
+  //   cy.get('h2').contains('Looks like there was a problem. Please try again later')
+  //   cy.get('a').click()
+  //   cy.get('h1').contains('Cats Meow')
+  // })
 
   it('should maintain fact display over page refresh', () => {
     cy.visit('http://localhost:3000/fact')

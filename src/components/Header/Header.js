@@ -22,7 +22,7 @@ const Header = () => {
       <Link to="/"><img className="logo" src="./cats_meow.png" alt="Cute cat"/></Link> 
       <h1 className="app-title">Cats Meow</h1>
       <img className={`hamburg hidden`} src={ham} alt="ham menu" onClick={toggleDrop}/>
-      <div className={`nav-links `}>
+      <div className={`nav-links`}>
         <NavLink className="link" to="/">home</NavLink>
         <NavLink className="link" to="/fact">facts</NavLink>
         <NavLink className="link" to="/favorites">favorites</NavLink>
