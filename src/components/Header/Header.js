@@ -10,10 +10,10 @@ const Header = () => {
   const toggleDrop = () => {
     if (dropDown === "hidden") {
       setDropdown("")
-      setHamb("hidden")
+      // setHamb("hidden")
     } else {
       setDropdown("hidden")
-      setHamb("")
+      // setHamb("")
     } 
   }
 
