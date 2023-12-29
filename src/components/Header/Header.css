@@ -1,24 +1,29 @@
 .header {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-evenly;
   background-color: rgb(7, 241, 218);
 }
 
 .logo {
-  height: 150px;
+  height: 135px;
   cursor: pointer;
+  margin: 10px;
 }
 
 .app-title {
   font-size: xxx-large;
 }
 
-.link {
+.link,
+.logo-link {
   all: unset;
+  cursor: pointer;
+}
+
+.link {
   margin: 5px;
   font-size: large;
   font-weight: 500;
-  cursor: pointer;
 }
 
 .link:hover {
