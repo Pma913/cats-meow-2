@@ -1,35 +1,35 @@
 .header {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-evenly;
   background-color: rgb(7, 241, 218);
 }
 
 .logo {
-  height: 150px;
+  height: 135px;
   cursor: pointer;
+  margin: 10px;
 }
 
 .app-title {
   font-size: xxx-large;
 }
 
-.link {
+.link,
+.logo-link {
   all: unset;
+  cursor: pointer;
+}
+
+.link {
   margin: 5px;
   font-size: large;
   font-weight: 500;
-  cursor: pointer;
 }
 
 .link:hover {
   color: rgb(244, 23, 23);
   background-color: black;
   border-radius: 2px;
-}
-
-.hamburg {
-  width: 2em;
-  cursor: pointer;
 }
 
 .hidden {
@@ -41,7 +41,13 @@
   align-items: center;
 }
 
-@media (max-width: 584px){
+@media (min-width: 584px) {
+  .ham-menu-box {
+    display: none;
+  }
+}
+
+@media (max-width: 584px) {
   .app-title {
     text-align: center;
   }
@@ -50,5 +56,14 @@
     flex-direction: column;
     align-items: center;
   }
+
+  .hamburg {
+    width: 2em;
+    cursor: pointer;
+  }
+
+  .nav-links {
+    display: none;
+  }  
 }   
 
