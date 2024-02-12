@@ -3,9 +3,9 @@ describe('error page', () => {
     cy.intercept('https://catfact.ninja/fact', {
       statusCode: 500
     })
-    cy.visit('https://cats-meow.vercel.app/')
+    cy.visit('http://localhost:3000/')
     cy.get('button[class=fact-btn]').click()
-    cy.get('h2').contains('Looks like there was a problem. Please try again later')
+    cy.get('h2').contains("Looks like something is wrong. Please try again later.")
   })
 
   it('should display message if no favorited facts', () => {
@@ -13,7 +13,14 @@ describe('error page', () => {
     cy.get('button[class=fav-btn]').click()
     cy.get('h2').contains('No saved ideas yet')
   })
-    it('should be able to visit home page', () => {
-      cy.visit('https://cats-meow.vercel.app/')
+    it('should be able to navigate back to home page', () => {
+      cy.intercept('https://catfact.ninja/fact', {
+      statusCode: 500
+    })
+      cy.visit('http://localhost:3000/')
+      cy.get('button[class=fact-btn]').click()
+      cy.get('h2').contains("Looks like something is wrong. Please try again later.")
+      cy.get('h3').click()
+      cy.get('h1').contains('Cats Meow')
     })
 })  
