@@ -55,11 +55,8 @@ const App = () => {
           element: <Error removeErr={removeErr} err="Page does not exist" /> 
         }
       ]
-    },
-    
-    ]
-  )
-
+    }
+  ])
   
     if (err) {
       return (
