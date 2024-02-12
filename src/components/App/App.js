@@ -1,7 +1,6 @@
 import './App.css';
 import React, { useState } from 'react';
 import Home from '../Home/Home';
-// import Header from '../Header/Header';
 import Fact, { factLoader } from '../Fact/Fact';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import Favorites from '../Favorites/Favorites';
@@ -10,7 +9,6 @@ import RootLayout from '../../utilities/RootLayout';
 
 const App = () => {
   const [favorites, setFavorites] = useState(JSON.parse(sessionStorage.getItem('allFavorites')) || []);
-  const [err, setErr] = useState('');
 
   const favoriteFact = (currentFact) => {
     const noDuplicate = favorites.every(fact => fact.fact !== currentFact.fact)
@@ -27,15 +25,12 @@ const App = () => {
     setFavorites(newFavs)
     sessionStorage.setItem('allFavorites', JSON.stringify(newFavs))
   }
-  
-  const removeErr = () => {
-    setErr('')
-  }
 
   const routes = createBrowserRouter([
     {
       path: "/",
       element: <RootLayout />,
+      errorElement: <Error err="Looks like something is wrong. Please try again later." />,
       children: [
         {
           path: "/",
@@ -49,30 +44,14 @@ const App = () => {
         {
           path: "/favorites",
           element: <Favorites removeFav={removeFav} favs={favorites} />
-        },
-        {
-          path: "/*",
-          element: <Error removeErr={removeErr} err="Page does not exist" /> 
         }
       ]
-    },
-    
-    ]
-  )
-
-  
-    if (err) {
-      return (
-        <div className="error-page">
-          <Error removeErr={removeErr} err={err} />
-        </div>
-      )
-    } else {
-      return (
-        <RouterProvider router={routes} />
-      )
     }
+  ])
   
+  return (
+    <RouterProvider router={routes} />
+  )
 }
 
 export default App;
