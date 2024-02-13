@@ -5,15 +5,10 @@ import PropTypes from 'prop-types';
 import { useLoaderData } from 'react-router-dom';
 
 const Fact = ({ favFact }) => {
-  const [currentFact, setCurrentFact] = useState(JSON.parse(sessionStorage.getItem('currentFact')));
-  // const [err, setErr] = useState('');
-
   const randFact = useLoaderData()
+  const savedFact = JSON.parse(sessionStorage.getItem('currentFact'))
 
-  if (currentFact === null) {
-    setCurrentFact(randFact)
-    sessionStorage.setItem('currentFact', JSON.stringify({fact: randFact.fact}))
-  }
+  const [currentFact, setCurrentFact] = useState(savedFact || randFact);
 
   const setFact = (fact) => {
     setCurrentFact({fact: fact});
@@ -24,10 +19,6 @@ const Fact = ({ favFact }) => {
     getCatFacts('https://catfact.ninja/fact')
       .then(data => {
         setFact(data.fact);
-      })
-      .catch(err => {
-        setFact(err);
-        console.log(err.message);
       })
   }
 
