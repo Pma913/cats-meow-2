@@ -5,15 +5,17 @@ import PropTypes from 'prop-types';
 import { useLoaderData } from 'react-router-dom';
 
 const Fact = ({ favFact }) => {
-  const [currentFact, setCurrentFact] = useState(JSON.parse(sessionStorage.getItem('currentFact')));
+  const randFact = useLoaderData()
+  const savedFact = JSON.parse(sessionStorage.getItem('currentFact'))
+
+  const [currentFact, setCurrentFact] = useState(savedFact || randFact);
   // const [err, setErr] = useState('');
 
-  const randFact = useLoaderData()
 
-  if (currentFact === null) {
-    setCurrentFact(randFact)
-    sessionStorage.setItem('currentFact', JSON.stringify({fact: randFact.fact}))
-  }
+  // if (currentFact === randFact) {
+  //   setCurrentFact(JSON.parse(sessionStorage.getItem('currentFact')));
+  //   sessionStorage.setItem('currentFact', JSON.stringify({fact: randFact.fact}))
+  // }
 
   const setFact = (fact) => {
     setCurrentFact({fact: fact});
