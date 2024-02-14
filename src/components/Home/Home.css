@@ -18,9 +18,21 @@
   border-radius: 10px;
   width: 15%;
   height: 5%;
-  background-color: brown;
+  background-color: #64c79f;
   border: 0;
-  color: white;
+  color: black;
+}
+
+.fact-btn:hover,
+.fav-btn:hover {
+  background-color: #3ba178;
+  border-bottom: solid black 4px;
+}
+
+.fact-btn:active,
+.fav-btn:active {
+  background-color: #ffffff;
+  border-bottom: 0px;
 }
 
 .fact-btn {
