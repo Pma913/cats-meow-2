@@ -1,0 +1,50 @@
+const testData = [{
+  breeds: [{
+      adaptability: 5,
+      affection_level: 5,
+      alt_names: "Siam, Thai Cat",
+      cfa_url: "http://cfa.org/Breeds/BreedsSthruT/Siamese.aspx",
+      child_friendly: 4,
+      country_code: "TH",
+      country_codes: "TH",
+      description: "While Siamese cats are extremely fond of their people, they will follow you around and supervise your every move, being talkative and opinionated. They are a demanding and social cat, that do not like being left alone for long periods.",
+      dog_friendly: 5,
+      energy_level: 5,
+      experimental: 0,
+      grooming: 1,
+      hairless: 0,
+      health_issues: 1,
+      hypoallergenic: 1,
+      id: "siam",
+      indoor: 0,
+      intelligence: 5,
+      lap: 1,
+      life_span: "12 - 15",
+      name: "Siamese",
+      natural: 0,
+      origin: "Thailand",
+      rare: 0,
+      reference_image_id: "ai6Jps4sx",
+      rex: 0,
+      shedding_level: 2,
+      short_legs: 0,
+      social_needs: 5,
+      stranger_friendly: 5,
+      suppressed_tail: 0,
+      temperament: "Active, Agile, Clever, Sociable, Loving, Energetic",
+      vcahospitals_url: "https://vcahospitals.com/know-your-pet/cat-breeds/siamese",
+      vetstreet_url: "http://www.vetstreet.com/cats/siamese",
+      vocalisation: 5,
+      weight: {
+        imperial: "8 - 15",
+        metric: "4 - 7"
+      },
+      wikipedia_url: "https://en.wikipedia.org/wiki/Siamese_(cat)"
+  }],
+  height: 809,
+  id: "uTG1YFzJV",
+  url: "https://cdn2.thecatapi.com/images/uTG1YFzJV.jpg",
+  width: 1080
+}]
+
+export default testData;

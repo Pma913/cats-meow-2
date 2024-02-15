@@ -11,7 +11,7 @@ const App = () => {
   const [favorites, setFavorites] = useState(JSON.parse(sessionStorage.getItem('allFavorites')) || []);
 
   const favoriteFact = (currentFact) => {
-    const noDuplicate = favorites.every(fact => fact.fact !== currentFact.fact)
+    const noDuplicate = favorites.every(fact => fact.id !== currentFact.id)
     
     if (noDuplicate) {
       setFavorites([...favorites, currentFact])
@@ -39,7 +39,7 @@ const App = () => {
         {
           path: "/fact",
           element: <Fact favFact={favoriteFact} />,
-          loader: factLoader
+          // loader: factLoader
         },
         {
           path: "/favorites",

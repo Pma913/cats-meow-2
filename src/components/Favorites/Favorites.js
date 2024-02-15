@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 const Favorites = ({ favs, removeFav }) => {
   const savedCards = favs.map(fact => {
     return <Card 
-      description={fact.fact}
+      description={fact.description}
       id={fact.id}
       key={fact.id}
       removeFav={removeFav}
