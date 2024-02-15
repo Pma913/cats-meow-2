@@ -27,8 +27,8 @@
 }
 
 .link:hover {
-  color: rgb(244, 23, 23);
-  background-color: black;
+  color: rgb(106, 8, 8);
+  border-bottom: solid black;
   border-radius: 2px;
 }
 

@@ -26,16 +26,17 @@ const Fact = ({ favFact }) => {
   return (
     <section className="fact-page">
       <div className="fact-display">
-        <p className="fact">{currentFact.description}</p>
+        <div className="cat-specs">
+          <p className="fact">{currentFact.description}</p>
+          <div className="button-container">
+            <button className="fav-card-btn" onClick={() => {
+              favFact(currentFact)
+            }}>Favorite</button>
+            <button className="new-fact-btn" onClick={fetchFact}>New Fact</button>
+          </div>
+        </div>
         <img className="fact-img" src={currentFact.image}
         alt={`A ${currentFact.name} cat`} />
-      </div>
-      <div className="button-container">
-        <button className="fav-card-btn" onClick={() => {
-          favFact(currentFact)
-        }}>Favorite</button>
-
-        <button className="new-fact-btn" onClick={fetchFact}>New Fact</button>
       </div>
     </section>
   )
