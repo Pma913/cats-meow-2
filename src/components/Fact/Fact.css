@@ -21,7 +21,6 @@
   align-items: center;
 }
 
-.fact,
 .fact-img {
   width: 50%;
   margin: 20px;
@@ -32,14 +31,17 @@
   border-radius: 15px;
 }
 
-.fact {
-  /* padding: 0 1em 1em; */
+.fact,
+.name,
+.dog-friendly,
+.energy-level,
+.affection-level,
+.origin,
+.temperament {
   font-size: large;
   font-weight: 600;
-  display: flex;
-  align-items: center;
-  text-align: center;
   overflow: scroll;
+  margin-left: 20px;
 }
 
 .fact-img {

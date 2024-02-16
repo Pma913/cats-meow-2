@@ -27,7 +27,15 @@ const Fact = ({ favFact }) => {
     <section className="fact-page">
       <div className="fact-display">
         <div className="cat-specs">
-          <p className="fact">{currentFact.description}</p>
+          <div className="cat-details">
+            <p className="name">{`Name: ${currentFact.name}`}</p>
+            <p className="dog-friendly">{`Dog Friendly: ${currentFact.dogFriendly}`}</p>
+            <p className="energy-level">{`Energy Level: ${currentFact.energyLevel}`}</p>
+            <p className="affection-level">{`Affection Level: ${currentFact.affectionLevel}`}</p>
+            <p className="origin">{`Origin: ${currentFact.origin}`}</p>
+            <p className="temperament">{`Temperaments: ${currentFact.temperament}`}</p>
+            <p className="fact">{`Description: ${currentFact.description}`}</p>
+          </div>
           <div className="button-container">
             <button className="fav-card-btn" onClick={() => {
               favFact(currentFact)
