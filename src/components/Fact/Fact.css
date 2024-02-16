@@ -94,6 +94,11 @@
   position: absolute;
 }
 
+.inactive {
+  border: solid grey;
+  border-width: 0 8px 8px 0;
+}
+
 .arrow-container {
   background: rgb(255, 255, 255);
   width: 86px;
@@ -103,8 +108,21 @@
   margin: 20px;
 }
 
+.inactive-container {
+  background: rgba(255, 255, 255, 0.703);
+  width: 86px;
+  height: 86px;
+  border-radius: 50px;
+  position: relative; 
+  margin: 20px;
+}
+
 .arrow-container:hover {
   cursor: pointer;
+}
+
+.inactive-container:hover {
+  cursor: default;
 }
 
 .right {
@@ -121,6 +139,9 @@
   bottom: 18px;
 }
 
+.signals {
+  color: white;
+}
 
 @media (max-width: 1250px) {
   .fact,

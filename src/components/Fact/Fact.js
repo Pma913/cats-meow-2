@@ -7,6 +7,7 @@ import testData from '../../utilities/test-data';
 import dataCleaner from '../../utilities/dataCleaner';
 import FactCard from '../FactCard/FactCard';
 
+
 const Fact = ({ favFact }) => {
   const savedSpecs = JSON.parse(sessionStorage.getItem('fact-cards'));
   // const catSpecs = useLoaderData()
@@ -14,14 +15,16 @@ const Fact = ({ favFact }) => {
   const catCards = catSpecs.map(cat => <FactCard key={cat.id} details={cat} favFact={favFact}/>);
   sessionStorage.setItem('fact-cards', JSON.stringify(catSpecs));
 
-  let [currentFact, setCurrentFact] = useState(catCards);
-  let [currentPlace, setCurrentPlace] = useState(0);
+  const [currentFact, setCurrentFact] = useState(catCards);
+  const [count, setCount] = useState(0);
+  const [active, setActive] = useState(false)
+  
 
   const setFact = (fact) => {
     setCurrentFact([...currentFact, fact]);
     sessionStorage.setItem('fact-cards', JSON.stringify([...savedSpecs, fact]));
-    sessionStorage.setItem('placeholder', JSON.stringify(currentPlace++));
-    setCurrentPlace(currentPlace++);
+    // sessionStorage.setItem('placeholder', JSON.stringify(currentPlace++));
+    // setCurrentPlace(currentPlace++);
   }
 
   const saveFacts = (fact) => {
@@ -33,31 +36,27 @@ const Fact = ({ favFact }) => {
   // const cleanedDetails = dataCleaner(res)
   // stFact(cleanedDetails)
   }
-
-  // const factCards = 
   
-  // I want to show only one card at a time
-  // but I want other cards to be loaded and ready to render
-  // Fetch a certain number of cats as an array (5)
-  // store that array in state
-  // have a forward and a back button
-  // when user clicks the next button, their place in que
-  // changes and a new fetch is made and added to the end
-  // of the que
-  // map the array into FactCard components
-  // store the array in state
-  // render state['placeholder variable']
+  // logic for back an forward exists
+  // now we need to make logic for fetching new material and appending it 
+  // to the end of the cards
 
   return (
     <section className="fact-page">
+      <p className={active ? "arrow-container" : "inactive-container"} onClick={() => {
+        if (count > 0) {
+          setCount(count => count - 1)
+        }
+        if (count <= 1) {
+          setActive(false)
+        }
+        }}><i className={active ? "arrow left" : "arrow left inactive"}></i></p>
+      {currentFact[count]}
       <p className="arrow-container" onClick={() => {
-        setCurrentPlace(currentPlace--)
-        console.log(currentPlace)
-        }}><i className="arrow left"></i></p>
-      {currentFact[currentPlace]}
-      <p className="arrow-container" onClick={() => {
-        setCurrentPlace(currentPlace++)
-        console.log(currentPlace)
+        if (count < 1) {
+          setActive(true)
+        }
+        setCount(count => count + 1)
       }}><i className="arrow right"></i></p>
     </section>
   )
