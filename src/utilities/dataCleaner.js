@@ -1,15 +1,17 @@
 const dataCleaner = (catApiData) => {
-  return {
-    affectionLevel: catApiData[0].breeds[0].affection_level,
-    description: catApiData[0].breeds[0].description,
-    dogFriendly: catApiData[0].breeds[0].dog_friendly >= 5 ? "Yes" : "No",
-    energyLevel: catApiData[0].breeds[0].energy_level,
-    id: Date.now(),
-    image: catApiData[0].url,
-    name: catApiData[0].breeds[0].name,
-    origin: catApiData[0].breeds[0].origin,
-    temperament: catApiData[0].breeds[0].temperament
-  }
+  return catApiData.map(cat =>{
+    return {
+      affectionLevel: cat.breeds[0].affection_level,
+      description: cat.breeds[0].description,
+      dogFriendly: cat.breeds[0].dog_friendly >= 5 ? "Yes" : "No",
+      energyLevel: cat.breeds[0].energy_level,
+      id: Date.now(),
+      image: cat.url,
+      name: cat.breeds[0].name,
+      origin: cat.breeds[0].origin,
+      temperament: cat.breeds[0].temperament
+    }
+  })
 }
 
 export default dataCleaner;

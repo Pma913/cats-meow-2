@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 import { useLoaderData } from 'react-router-dom';
 import testData from '../../utilities/test-data';
 import dataCleaner from '../../utilities/dataCleaner';
+import FactCard from '../FactCard/FactCard';
 
 const Fact = ({ favFact }) => {
   const savedSpec = JSON.parse(sessionStorage.getItem('currentSpec'))
@@ -23,9 +24,23 @@ const Fact = ({ favFact }) => {
   // stFact(cleanedDetails)
   }
 
+  const mapFacts = catSpecs.map(cat => <FactCard key={cat.id} details={cat}/>)
+  console.log(mapFacts)
+  // I want to show only one card at a time
+  // but I want other cards to be loaded and ready to render
+  // Fetch a certain number of cats as an array (5)
+  // store that array in state
+  // have a forward and a back button
+  // when user clicks the next button, their place in que
+  // changes and a new fetch is made and added to the end
+  // of the que
+  // map the array into FactCard components
+  // store the array in state
+  // render state['placeholder variable']
+
   return (
     <section className="fact-page">
-      <div className="fact-display">
+      {/* <div className="fact-display">
         <div className="cat-specs">
           <div className="cat-details">
             <p className="name">{`Name: ${currentFact.name}`}</p>
@@ -45,7 +60,8 @@ const Fact = ({ favFact }) => {
         </div>
         <img className="fact-img" src={currentFact.image}
         alt={`A ${currentFact.name} cat`} />
-      </div>
+      </div> */}
+      {mapFacts}
     </section>
   )
 };
