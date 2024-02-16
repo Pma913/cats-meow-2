@@ -1,8 +1,9 @@
 .fact-page {
   display: flex;
-  flex-direction: column;
+  /* flex-direction: column; */
   align-items: center;
   background-color: black;
+  justify-content: center;
 }
 
 .fact-display {
@@ -83,6 +84,41 @@
 .new-fact-btn:after,
 .fav-card-btn:after {
   transition: 2.0s;
+}
+
+.arrow {
+  border: solid rgb(0, 0, 0);
+  border-width: 0 8px 8px 0;
+  display: inline-block;
+  padding: 20px;
+  position: absolute;
+}
+
+.arrow-container {
+  background: rgb(255, 255, 255);
+  width: 86px;
+  height: 86px;
+  border-radius: 50px;
+  position: relative; 
+  margin: 20px;
+}
+
+.arrow-container:hover {
+  cursor: pointer;
+}
+
+.right {
+  transform: rotate(-45deg);
+  -webkit-transform: rotate(-45deg);
+  right: 30px;
+  bottom: 18px;
+}
+
+.left {
+  transform: rotate(135deg);
+  -webkit-transform: rotate(135deg);
+  left: 30px;
+  bottom: 18px;
 }
 
 

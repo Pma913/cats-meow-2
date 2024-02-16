@@ -8,14 +8,24 @@ import dataCleaner from '../../utilities/dataCleaner';
 import FactCard from '../FactCard/FactCard';
 
 const Fact = ({ favFact }) => {
-  const savedSpec = JSON.parse(sessionStorage.getItem('currentSpec'))
+  const savedSpecs = JSON.parse(sessionStorage.getItem('fact-cards'));
   // const catSpecs = useLoaderData()
-  const catSpecs = dataCleaner(testData)
-  const [currentFact, setCurrentFact] = useState(savedSpec || catSpecs);
+  const catSpecs = savedSpecs || dataCleaner(testData);
+  const catCards = catSpecs.map(cat => <FactCard key={cat.id} details={cat} favFact={favFact}/>);
+  sessionStorage.setItem('fact-cards', JSON.stringify(catSpecs));
+
+  let [currentFact, setCurrentFact] = useState(catCards);
+  let [currentPlace, setCurrentPlace] = useState(0);
 
   const setFact = (fact) => {
-    setCurrentFact(fact);
-    sessionStorage.setItem('currentFact', JSON.stringify(fact))
+    setCurrentFact([...currentFact, fact]);
+    sessionStorage.setItem('fact-cards', JSON.stringify([...savedSpecs, fact]));
+    sessionStorage.setItem('placeholder', JSON.stringify(currentPlace++));
+    setCurrentPlace(currentPlace++);
+  }
+
+  const saveFacts = (fact) => {
+      sessionStorage.setItem('fact-cards', JSON.stringify([...savedSpecs, fact]));
   }
 
   const fetchFact = () => {
@@ -24,8 +34,8 @@ const Fact = ({ favFact }) => {
   // stFact(cleanedDetails)
   }
 
-  const mapFacts = catSpecs.map(cat => <FactCard key={cat.id} details={cat}/>)
-  console.log(mapFacts)
+  // const factCards = 
+  
   // I want to show only one card at a time
   // but I want other cards to be loaded and ready to render
   // Fetch a certain number of cats as an array (5)
@@ -40,28 +50,15 @@ const Fact = ({ favFact }) => {
 
   return (
     <section className="fact-page">
-      {/* <div className="fact-display">
-        <div className="cat-specs">
-          <div className="cat-details">
-            <p className="name">{`Name: ${currentFact.name}`}</p>
-            <p className="dog-friendly">{`Dog Friendly: ${currentFact.dogFriendly}`}</p>
-            <p className="energy-level">{`Energy Level: ${currentFact.energyLevel}`}</p>
-            <p className="affection-level">{`Affection Level: ${currentFact.affectionLevel}`}</p>
-            <p className="origin">{`Origin: ${currentFact.origin}`}</p>
-            <p className="temperament">{`Temperaments: ${currentFact.temperament}`}</p>
-            <p className="fact">{`Description: ${currentFact.description}`}</p>
-          </div>
-          <div className="button-container">
-            <button className="fav-card-btn" onClick={() => {
-              favFact(currentFact)
-            }}>Favorite</button>
-            <button className="new-fact-btn" onClick={fetchFact}>New Fact</button>
-          </div>
-        </div>
-        <img className="fact-img" src={currentFact.image}
-        alt={`A ${currentFact.name} cat`} />
-      </div> */}
-      {mapFacts}
+      <p className="arrow-container" onClick={() => {
+        setCurrentPlace(currentPlace--)
+        console.log(currentPlace)
+        }}><i className="arrow left"></i></p>
+      {currentFact[currentPlace]}
+      <p className="arrow-container" onClick={() => {
+        setCurrentPlace(currentPlace++)
+        console.log(currentPlace)
+      }}><i className="arrow right"></i></p>
     </section>
   )
 };
