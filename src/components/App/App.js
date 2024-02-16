@@ -39,7 +39,7 @@ const App = () => {
         {
           path: "/fact",
           element: <Fact favFact={favoriteFact} />,
-          // loader: factLoader
+          loader: factLoader
         },
         {
           path: "/favorites",

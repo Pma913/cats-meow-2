@@ -1,19 +1,20 @@
 import React, { useState } from 'react';
 import './Fact.css';
-import { getCatFacts, getCatPhotos } from '../../utilities/api-call';
+import { getCatPhotos, getSinglePhoto } from '../../utilities/api-call';
 import PropTypes from 'prop-types'; 
 import { useLoaderData } from 'react-router-dom';
-import testData from '../../utilities/test-data';
+// import testData from '../../utilities/test-data';
 import dataCleaner from '../../utilities/dataCleaner';
 import FactCard from '../FactCard/FactCard';
 
 
 const Fact = ({ favFact }) => {
-  const savedSpecs = JSON.parse(sessionStorage.getItem('fact-cards'));
-  // const catSpecs = useLoaderData()
-  const catSpecs = savedSpecs || dataCleaner(testData);
+  // const savedSpecs = JSON.parse(sessionStorage.getItem('fact-cards'));
+  
+  const catSpecs = useLoaderData();
+  console.log(catSpecs)
   const catCards = catSpecs.map(cat => <FactCard key={cat.id} details={cat} favFact={favFact}/>);
-  sessionStorage.setItem('fact-cards', JSON.stringify(catSpecs));
+  // sessionStorage.setItem('fact-cards', JSON.stringify(catSpecs));
 
   const [currentFact, setCurrentFact] = useState(catCards);
   const [count, setCount] = useState(0);
@@ -22,19 +23,19 @@ const Fact = ({ favFact }) => {
 
   const setFact = (fact) => {
     setCurrentFact([...currentFact, fact]);
-    sessionStorage.setItem('fact-cards', JSON.stringify([...savedSpecs, fact]));
+    // sessionStorage.setItem('fact-cards', JSON.stringify([...savedSpecs, fact]));
     // sessionStorage.setItem('placeholder', JSON.stringify(currentPlace++));
     // setCurrentPlace(currentPlace++);
   }
 
   const saveFacts = (fact) => {
-      sessionStorage.setItem('fact-cards', JSON.stringify([...savedSpecs, fact]));
+      // sessionStorage.setItem('fact-cards', JSON.stringify([...savedSpecs, fact]));
   }
 
   const fetchFact = () => {
-  // const res = await getCatPhotos()
-  // const cleanedDetails = dataCleaner(res)
-  // stFact(cleanedDetails)
+  const res = getSinglePhoto();
+  const cleanedDetails = dataCleaner(res).map(cat => <FactCard key={cat.id} details={cat} favFact={favFact}/>);
+  setCurrentFact(oldFacts => [...oldFacts, ...cleanedDetails])
   }
   
   // logic for back an forward exists
@@ -68,9 +69,9 @@ export const factLoader = async () => {
 //   // const res = await fetch('https://catfact.ninja/fact')
 
 //   // return res.json()
-//   const res = await getCatPhotos()
+  const res = await getCatPhotos()
 
-//   return dataCleaner(res)
+  return dataCleaner(res)
 }
 
 Fact.propTypes = {
