@@ -10,7 +10,7 @@ const getCatFacts = (url) => {
 };
 
 const getCatPhotos = () => {
-  return fetch('https://api.thecatapi.com/v1/images/search?size=med&mime_types=jpg&format=json&has_breeds=true&order=RANDOM&page=0&limit=5', {
+  return fetch('https://api.thecatapi.com/v1/images/search?size=med&mime_types=jpg&format=json&has_breeds=true&order=RANDOM&page=0&limit=10', {
     method: 'GET',
     headers: {
       "Content-Type": "application/json",
@@ -19,16 +19,14 @@ const getCatPhotos = () => {
   })
   .then(res => {
     if (!res.ok) {
-      console.log('whoops')
       throw new Error(res.status);
     } else {
-      console.log('what is wrong?')
       return res.json();
     }
   });
 }
 
-const getSinglePhoto = () => {
+const getSingleCat = () => {
   return fetch('https://api.thecatapi.com/v1/images/search?size=med&mime_types=jpg&format=json&has_breeds=true&order=RANDOM&page=0&limit=1', {
     method: 'GET',
     headers: {
@@ -38,13 +36,11 @@ const getSinglePhoto = () => {
   })
   .then(res => {
     if (!res.ok) {
-      console.log('whoops')
       throw new Error(res.status);
     } else {
-      console.log('what is wrong?')
       return res.json();
     }
   });
 }
 
-export { getCatFacts, getCatPhotos, getSinglePhoto };
+export { getCatPhotos, getSingleCat };
