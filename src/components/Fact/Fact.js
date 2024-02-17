@@ -16,7 +16,9 @@ const Fact = ({ favFact }) => {
 
   const [currentFact, setCurrentFact] = useState(catCards);
   const [count, setCount] = useState(0);
-  const [active, setActive] = useState(false)
+  const [active, setActive] = useState(false);
+  const [backup, setBackup] = useState([currentFact[currentFact.length - 1]]);
+  const [useBackup, setUseBackup] = useState(false)
   
 
   const setFact = (fact) => {
@@ -31,16 +33,27 @@ const Fact = ({ favFact }) => {
   }
 
   const fetchFact = () => {
-  getCatPhotos()
-    .then(res => {
-      const cleanedDetails = dataCleaner(res).map(cat => <FactCard key={cat.id} details={cat} favFact={favFact}/>);
-      setCurrentFact(oldFacts => [...oldFacts, ...cleanedDetails]);
-    });
+    console.log('fetch triggered')
+    getCatPhotos()
+      .then(res => {
+        const cleanedDetails = dataCleaner(res).map(cat => <FactCard key={cat.id} details={cat} favFact={favFact}/>);
+        setCurrentFact(oldFacts => [...oldFacts, ...cleanedDetails]);
+      })
+      .then(() => {
+        setUseBackup(() => false)
+        setBackup(backup => backup = [currentFact[currentFact.length - 1]])
+        console.log('backup')
+      })
   }
   
   // logic for back an forward exists
   // now we need to make logic for fetching new material and appending it 
   // to the end of the cards
+  // we need two variables
+  // one holds backup data
+  // the other holds the actual data
+  // the actual data will be primary source of data
+  // the backup will be for when the program is fetching data
 
   return (
     <section className="fact-page">
@@ -52,13 +65,15 @@ const Fact = ({ favFact }) => {
           setActive(false)
         }
         }}><i className={active ? "arrow left" : "arrow left inactive"}></i></p>
-      {currentFact[count]}
+      {currentFact[count] || <FactCard key={backup.id} details={backup} favFact={favFact}/>}
       <p className="arrow-container" onClick={() => {
         if (count < 1) {
           setActive(true)
         }
-        if (currentFact.length - count <= 1) {
+        if (count === currentFact.length - 2) {
+          setUseBackup(() => true)
           fetchFact()
+          console.log(useBackup)
           console.log('alrightey matey')
           console.log(count, currentFact)
         }
