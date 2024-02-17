@@ -1,4 +1,8 @@
-const FactCard = ({ details }) => {
+import thumbsUp from '../../utilities/thumbs-up.png';
+import thumbsDown from '../../utilities/thumbs-down.png';
+import './FactCard.css';
+
+const FactCard = ({ details, favFact, removeFav }) => {
 
   return (
     <div className="fact-display">
@@ -13,10 +17,16 @@ const FactCard = ({ details }) => {
           <p className="fact">{`Description: ${details.description}`}</p>
         </div>
         <div className="button-container">
-          <button className="fav-card-btn" onClick={() => {
-            // favFact(details)
-          }}>Favorite</button>
-          {/* <button className="new-fact-btn" onClick={fetchFact}>New Fact</button> */}
+          <div className="vote-icon-container">
+            <img src={thumbsUp} alt="favorite button" className="vote-icon fav" onClick={() => {
+              favFact(details);
+            }}/>
+          </div>
+          <div className="vote-icon-container">
+            <img src={thumbsDown} alt="unfavorite button" className="vote-icon unfav" onClick={() => {
+              removeFav(details.id);
+            }}/>
+          </div>
         </div>
       </div>
       <img className="fact-img" src={details.image}
