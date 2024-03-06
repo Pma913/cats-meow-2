@@ -41,6 +41,7 @@
   top: 16px;
   border-top-left-radius: 7px;
   border-bottom-left-radius: 7px;
+  /* height: 50%; */
 }
 
 .fav-card:hover .card-btn-container,
@@ -51,6 +52,8 @@
 
 .delete-btn {
   cursor: pointer;
+  width: 35px;
+  padding-top: 5px;
 }
 
 @media (max-width: 900px) {
