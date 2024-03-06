@@ -8,23 +8,32 @@ import Error from '../Error/Error';
 import RootLayout from '../../utilities/RootLayout';
 import dataCleaner from '../../utilities/dataCleaner';
 import { getCatPhotos } from '../../utilities/api-call';
-import FactCard from '../FactCard/FactCard';
 
 const App = () => {
-  const [favorites, setFavorites] = useState([]);
-  const [cats, setCats] = useState([])
+  const [favoritedFacts, setFavoritedFacts] = useState([]);
+  const [cats, setCats] = useState([]);
+  const [count, setCount] = useState(0);
+
+  useEffect(() => {
+    if (cats.length === 0) {
+      getCatPhotos()
+      .then(res => {
+        setCats(dataCleaner(res))
+      })
+    }
+    console.log(cats, 'useEffect hook in app')
+  },[cats])
 
   const favoriteFact = (currentFact) => {
-    const noDuplicate = favorites.every(fact => fact.id !== currentFact.id)
-    
+    const noDuplicate = favoritedFacts.every(fact => fact.id !== currentFact.id)
     if (noDuplicate) {
-      setFavorites([...favorites, currentFact])
+      setFavoritedFacts([...favoritedFacts, currentFact])
     }
   }
 
   const removeFav = (id) => {
-    const newFavs = favorites.filter(fact => fact.id !== id)
-    setFavorites(newFavs)
+    const newFavs = favoritedFacts.filter(fact => fact.id !== id)
+    setFavoritedFacts(newFavs)
   }
 
   const addData = (data) => {
@@ -43,32 +52,22 @@ const App = () => {
         },
         {
           path: "/fact",
-          element: <Fact favFact={favoriteFact} removeFav={removeFav} cats={cats} addData={addData} />,
-          // loader: factLoader
+          element: <Fact 
+            favFact={favoriteFact}
+            removeFav={removeFav} 
+            setCats={setCats} 
+            cats={cats} 
+            addData={addData} 
+            catCount={count}
+            saveCatCount={setCount}/>,
         },
         {
           path: "/favorites",
-          element: <Favorites removeFav={removeFav} favs={favorites} />
+          element: <Favorites removeFav={removeFav} favs={favoritedFacts} />
         }
       ]
     }
   ])
-
-  useEffect(() => {
-    if (cats.length === 0) {
-      getCatPhotos()
-      .then(res => {
-        const catSpecs = dataCleaner(res).map(cat => <FactCard 
-          key={cat.id}
-          details={cat} 
-          favFact={favoriteFact}
-          removeFav={removeFav}
-        />);
-        setCats(catSpecs)
-        console.log(catSpecs)
-      })
-    }
-  })
 
   return (
     <RouterProvider router={routes} />

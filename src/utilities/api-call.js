@@ -10,7 +10,6 @@ const getCatPhotos = () => {
     if (!res.ok) {
       throw new Error(res.status);
     } else {
-    console.log('fetch made')
       return res.json();
     }
   });

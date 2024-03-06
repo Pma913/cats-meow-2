@@ -1,22 +1,53 @@
 .fav-card {
   display: flex;
   width: 18%;
-  border: solid 5px black;
+  border: solid 2px black;
   border-radius: 10px;
-  background-color: #ff9c00;
+  background-color: #ffffff;
   color: black;
   font-weight: 700;
   text-align: center;
-  padding: 5px;
   margin: 10px;
   height: 10em;
   flex-direction: column;
   justify-content: space-between;
+  position: relative;
 }
 
-.fav-card-fact {
-  overflow: scroll;
+.card-thumb {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 7px;
 }
+
+.fav-card-name {
+  position: absolute;
+  bottom: 0;
+  background: #ffffff8a;
+  width: 100%;
+  margin: 0;
+  padding: 16px 0px;
+  border-bottom-left-radius: 7px;
+  border-bottom-right-radius: 7px;
+}
+
+.card-btn-container {
+  opacity: 0;
+  position: absolute;
+  width: 26%;
+  background-color: #ffffff8a;
+  right: 0;
+  top: 16px;
+  border-top-left-radius: 7px;
+  border-bottom-left-radius: 7px;
+}
+
+.fav-card:hover .card-btn-container,
+.fav-card:hover .fav-card-name {
+  display: block;
+  opacity: 1;
+} 
 
 .delete-btn {
   cursor: pointer;

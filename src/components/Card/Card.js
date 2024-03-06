@@ -2,13 +2,17 @@ import React from 'react';
 import './Card.css';
 import PropTypes from 'prop-types'; 
 
-const Card = ({ description, removeFav, id }) => {
+const Card = ({ name, removeFav, id, image }) => {
   return (
     <div className="fav-card">
-      <p className="fav-card-fact">{description}</p>
-      <button className="delete-btn" onClick={() => {
-        removeFav(id);
-      }}>Delete</button>
+      <img src={image} alt={`${name} cat`} className="card-thumb" />
+      <div className="card-btn-container">
+        <button className="delete-btn" onClick={() => {
+          removeFav(id);
+        }}>Delete</button>
+        <button className="expand-button">Expand</button>
+      </div>
+      <p className="fav-card-name">{name}</p>
     </div>
   );
 };
@@ -16,7 +20,7 @@ const Card = ({ description, removeFav, id }) => {
 export default Card;
 
 Card.propTypes = {
-  description: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
   removeFav: PropTypes.func.isRequired,
   id: PropTypes.number.isRequired
 }
