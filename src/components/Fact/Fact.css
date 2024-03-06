@@ -1,6 +1,5 @@
 .fact-page {
   display: flex;
-  /* flex-direction: column; */
   align-items: center;
   background-color: black;
   justify-content: center;
@@ -67,7 +66,6 @@
   background-color: #64c79f;
   border: 0;
   color: black;
-  /* margin-top: 4em; */
 }
 
 .new-fact-btn:hover,
@@ -140,6 +138,10 @@
 }
 
 .signals {
+  color: white;
+}
+
+.custom-err {
   color: white;
 }
 

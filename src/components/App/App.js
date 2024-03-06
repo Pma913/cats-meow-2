@@ -20,6 +20,11 @@ const App = () => {
       .then(res => {
         setCats(dataCleaner(res))
       })
+      .catch(err => {
+        console.log('things are heading up')
+        console.log(err)
+        throw new Error(err)
+      })
     }
     console.log(cats, 'useEffect hook in app')
   },[cats])

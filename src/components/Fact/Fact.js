@@ -21,6 +21,9 @@ const Fact = ({ favFact, removeFav, cats, setCats, catCount, saveCatCount }) => 
         const cleanedDetails = dataCleaner(res);
         setCats([...cats, ...cleanedDetails]);
       })
+      .catch(err => {
+        console.log(err)
+      })
   }
 
   useEffect(()=> {
