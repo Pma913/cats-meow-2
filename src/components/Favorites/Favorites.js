@@ -4,7 +4,7 @@ import Card from '../Card/Card';
 import PropTypes from 'prop-types'; 
 
 const Favorites = ({ favs, removeFav }) => {
-  console.log(favs, 'favorites')
+
   const savedCards = favs.map(fact => {
     return <Card 
       name={fact.name}
@@ -14,7 +14,7 @@ const Favorites = ({ favs, removeFav }) => {
       removeFav={removeFav}
     />
   })
-    console.log(savedCards.length, 'savedcards length')
+
   return (
     <section className="fav-card-display">
       {!savedCards.length ? 

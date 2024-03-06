@@ -1,7 +1,6 @@
 .fav-card {
   display: flex;
   width: 18%;
-  border: solid 2px black;
   border-radius: 10px;
   background-color: #ffffff;
   color: black;
