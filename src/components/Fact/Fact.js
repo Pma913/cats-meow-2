@@ -6,9 +6,9 @@ import dataCleaner from '../../utilities/dataCleaner';
 import FactCard from '../FactCard/FactCard';
 
 
-const Fact = ({ favFact, removeFav }) => {
+const Fact = ({ favFact, removeFav, cats }) => {
 
-  const [currentFacts, setCurrentFacts] = useState([]);
+  const [currentFacts, setCurrentFacts] = useState(cats || []);
   const [count, setCount] = useState(0);
   const [active, setActive] = useState(false);
   const [backup, setBackup] = useState([currentFacts[currentFacts.length - 1]]);
@@ -23,7 +23,7 @@ const Fact = ({ favFact, removeFav }) => {
           favFact={favFact}
           removeFav={removeFav}
         />);
-        setCurrentFacts(oldFacts => [...oldFacts, ...cleanedDetails]);
+        setCurrentFacts([...cats, ...cleanedDetails]);
       })
       .then(() => {
         setBackup(backup => backup = [currentFacts[currentFacts.length - 1]]);
@@ -31,19 +31,6 @@ const Fact = ({ favFact, removeFav }) => {
   }
 
   useEffect(()=> {
-    getCatPhotos()
-    .then(res => {
-      const catSpecs = dataCleaner(res)
-      const catCards = catSpecs.map(cat => <FactCard
-      key={cat.id} 
-      details={cat} 
-      favFact={favFact}
-      removeFav={removeFav}
-    />)
-      setCurrentFacts(catCards)
-    })
-    
-
   },[favFact, removeFav])
 
   return (
