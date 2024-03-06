@@ -2,25 +2,21 @@ import React, { useState, useEffect } from 'react';
 import './Fact.css';
 import { getCatPhotos } from '../../utilities/api-call';
 import PropTypes from 'prop-types'; 
-// import { useLoaderData } from 'react-router-dom';
 import dataCleaner from '../../utilities/dataCleaner';
 import FactCard from '../FactCard/FactCard';
 
 
 const Fact = ({ favFact, removeFav }) => {
 
-  
-
   const [currentFacts, setCurrentFacts] = useState([]);
   const [count, setCount] = useState(0);
   const [active, setActive] = useState(false);
   const [backup, setBackup] = useState([currentFacts[currentFacts.length - 1]]);
 
-  
-
   const fetchFact = () => {
     getCatPhotos()
       .then(res => {
+        console.log('fetching an extra 10 facts')
         const cleanedDetails = dataCleaner(res).map(cat => <FactCard 
           key={cat.id}
           details={cat} 
@@ -48,7 +44,7 @@ const Fact = ({ favFact, removeFav }) => {
     })
     
 
-  },[])
+  },[favFact, removeFav])
 
   return (
     <section className="fact-page">
@@ -60,12 +56,14 @@ const Fact = ({ favFact, removeFav }) => {
           setActive(false);
         }
         }}><i className={active ? "arrow left" : "arrow left inactive"}></i></p>
+
       {currentFacts[count] || <FactCard
         key={backup.id}
         details={backup}
         favFact={favFact}
         removeFav={removeFav}
         />}
+
       <p className="arrow-container" onClick={() => {
         if (count < 1) {
           setActive(true)
@@ -80,12 +78,6 @@ const Fact = ({ favFact, removeFav }) => {
 };
 
 export default Fact;
-
-// export const factLoader = async () => {
-//   const res = await getCatPhotos()
-
-//   return dataCleaner(res)
-// }
 
 Fact.propTypes = {
   favFact: PropTypes.func.isRequired
