@@ -8,7 +8,7 @@
   font-weight: 700;
   text-align: center;
   margin: 10px;
-  height: 10em;
+  height: 18em;
   flex-direction: column;
   justify-content: space-between;
   position: relative;
@@ -34,6 +34,7 @@
 
 .card-btn-container {
   opacity: 0;
+  transition: opacity 0.56s ease-in-out;
   position: absolute;
   width: 26%;
   background-color: #ffffff8a;
