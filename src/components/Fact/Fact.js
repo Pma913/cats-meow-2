@@ -1,26 +1,22 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './Fact.css';
 import { getCatPhotos } from '../../utilities/api-call';
 import PropTypes from 'prop-types'; 
-import { useLoaderData } from 'react-router-dom';
+// import { useLoaderData } from 'react-router-dom';
 import dataCleaner from '../../utilities/dataCleaner';
 import FactCard from '../FactCard/FactCard';
 
 
 const Fact = ({ favFact, removeFav }) => {
 
-  const catSpecs = useLoaderData();
-  const catCards = catSpecs.map(cat => <FactCard
-    key={cat.id} 
-    details={cat} 
-    favFact={favFact}
-    removeFav={removeFav}
-  />);
+  
 
-  const [currentFact, setCurrentFact] = useState(catCards);
+  const [currentFacts, setCurrentFacts] = useState([]);
   const [count, setCount] = useState(0);
   const [active, setActive] = useState(false);
-  const [backup, setBackup] = useState([currentFact[currentFact.length - 1]]);
+  const [backup, setBackup] = useState([currentFacts[currentFacts.length - 1]]);
+
+  
 
   const fetchFact = () => {
     getCatPhotos()
@@ -31,12 +27,28 @@ const Fact = ({ favFact, removeFav }) => {
           favFact={favFact}
           removeFav={removeFav}
         />);
-        setCurrentFact(oldFacts => [...oldFacts, ...cleanedDetails]);
+        setCurrentFacts(oldFacts => [...oldFacts, ...cleanedDetails]);
       })
       .then(() => {
-        setBackup(backup => backup = [currentFact[currentFact.length - 1]]);
+        setBackup(backup => backup = [currentFacts[currentFacts.length - 1]]);
       });
   }
+
+  useEffect(()=> {
+    getCatPhotos()
+    .then(res => {
+      const catSpecs = dataCleaner(res)
+      const catCards = catSpecs.map(cat => <FactCard
+      key={cat.id} 
+      details={cat} 
+      favFact={favFact}
+      removeFav={removeFav}
+    />)
+      setCurrentFacts(catCards)
+    })
+    
+
+  },[])
 
   return (
     <section className="fact-page">
@@ -48,7 +60,7 @@ const Fact = ({ favFact, removeFav }) => {
           setActive(false);
         }
         }}><i className={active ? "arrow left" : "arrow left inactive"}></i></p>
-      {currentFact[count] || <FactCard
+      {currentFacts[count] || <FactCard
         key={backup.id}
         details={backup}
         favFact={favFact}
@@ -58,7 +70,7 @@ const Fact = ({ favFact, removeFav }) => {
         if (count < 1) {
           setActive(true)
         }
-        if (count === currentFact.length - 2) {
+        if (count === currentFacts.length - 2) {
           fetchFact();
         }
         setCount(count => count + 1);
@@ -69,11 +81,11 @@ const Fact = ({ favFact, removeFav }) => {
 
 export default Fact;
 
-export const factLoader = async () => {
-  const res = await getCatPhotos()
+// export const factLoader = async () => {
+//   const res = await getCatPhotos()
 
-  return dataCleaner(res)
-}
+//   return dataCleaner(res)
+// }
 
 Fact.propTypes = {
   favFact: PropTypes.func.isRequired

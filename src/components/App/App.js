@@ -1,7 +1,7 @@
 import './App.css';
 import React, { useState } from 'react';
 import Home from '../Home/Home';
-import Fact, { factLoader } from '../Fact/Fact';
+import Fact from '../Fact/Fact';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import Favorites from '../Favorites/Favorites';
 import Error from '../Error/Error';
@@ -39,7 +39,7 @@ const App = () => {
         {
           path: "/fact",
           element: <Fact favFact={favoriteFact} removeFav={removeFav} />,
-          loader: factLoader
+          // loader: factLoader
         },
         {
           path: "/favorites",
