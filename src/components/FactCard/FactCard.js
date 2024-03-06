@@ -1,8 +1,11 @@
 import thumbsUp from '../../utilities/thumbs-up.png';
-import thumbsDown from '../../utilities/thumbs-down.png';
+import thumbsUpGold from '../../utilities/thumbs-up-gold.PNG';
 import './FactCard.css';
+import { useState } from 'react';
 
 const FactCard = ({ details, favFact, removeFav }) => {
+
+  const [favorited, setFavorited] = useState(false);
 
   return (
     <div className="fact-display">
@@ -18,13 +21,9 @@ const FactCard = ({ details, favFact, removeFav }) => {
         </div>
         <div className="button-container">
           <div className="vote-icon-container">
-            <img src={thumbsUp} alt="favorite button" className="vote-icon fav" onClick={() => {
+            <img src={favorited ? thumbsUpGold : thumbsUp} alt="favorite button" className="vote-icon fav" onClick={() => {
+              setFavorited(!favorited);
               favFact(details);
-            }}/>
-          </div>
-          <div className="vote-icon-container">
-            <img src={thumbsDown} alt="unfavorite button" className="vote-icon unfav" onClick={() => {
-              removeFav(details.id);
             }}/>
           </div>
         </div>
