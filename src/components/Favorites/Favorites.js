@@ -1,12 +1,15 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import './Favorites.css';
 import Card from '../Card/Card';
 import PropTypes from 'prop-types'; 
 
 const Favorites = ({ favs, removeFav }) => {
 
+  const [selected, setSelected] = useState();
+
   const savedCards = favs.map(fact => {
     return <Card 
+      stats={fact}
       name={fact.name}
       image={fact.image}
       id={fact.id}
@@ -20,6 +23,7 @@ const Favorites = ({ favs, removeFav }) => {
       {!savedCards.length ? 
       <h2 className="no-ideas">No saved ideas yet</h2> :
       savedCards}
+      {/* {selected ?? <Card} */}
     </section>
   );
 };
