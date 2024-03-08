@@ -18,6 +18,7 @@ const App = () => {
     if (cats.length === 0) {
       getCatPhotos()
       .then(res => {
+        console.log( 'results',res)
         setCats(dataCleaner(res))
       })
       .catch(err => {
