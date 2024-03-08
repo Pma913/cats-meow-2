@@ -46,3 +46,20 @@
   object-fit: cover;
   border-radius: 10px;
 }
+
+.exp-links-container {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.exp-stats-title,
+.exp-links-title {
+  font-weight: 600;
+  font-size: large;
+}
+
+.exp-name {
+  font-weight: 900;
+  font-size: xx-large;
+  margin: unset;
+}
