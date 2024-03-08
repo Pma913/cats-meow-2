@@ -22,5 +22,5 @@ export default Card;
 Card.propTypes = {
   name: PropTypes.string.isRequired,
   removeFav: PropTypes.func.isRequired,
-  id: PropTypes.number.isRequired
+  id: PropTypes.string.isRequired
 }
