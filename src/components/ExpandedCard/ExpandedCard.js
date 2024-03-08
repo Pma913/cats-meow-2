@@ -2,7 +2,7 @@ import './ExpandedCard.css';
 import cancelIcon from '../../utilities/x.svg';
 
 const ExpandedCard = ({ stats, removeCard }) => {
-  console.log(stats.img)
+  
   return (
     <div className="expanded-background" onClick={(event) => {
       if (event.target.className === "expanded-background") {

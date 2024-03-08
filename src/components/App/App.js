@@ -18,16 +18,13 @@ const App = () => {
     if (cats.length === 0) {
       getCatPhotos()
       .then(res => {
-        console.log( 'results',res)
         setCats(dataCleaner(res))
       })
       .catch(err => {
-        console.log('things are heading up')
         console.log(err)
         throw new Error(err)
       })
     }
-    console.log(cats, 'useEffect hook in app')
   },[cats])
 
   const favoriteFact = (currentFact) => {
