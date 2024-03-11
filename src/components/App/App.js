@@ -13,6 +13,7 @@ const App = () => {
   const [favoritedFacts, setFavoritedFacts] = useState([]);
   const [cats, setCats] = useState([]);
   const [count, setCount] = useState(0);
+  const [err, setErr] = useState()
 
   useEffect(() => {
     if (cats.length === 0) {
@@ -22,7 +23,8 @@ const App = () => {
       })
       .catch(err => {
         console.log(err)
-        throw new Error(err)
+        setErr(err)
+        
       })
     }
   },[cats])
@@ -62,6 +64,8 @@ const App = () => {
             cats={cats} 
             addData={addData} 
             catCount={count}
+            err={err}
+            setErr={err}
             saveCatCount={setCount}/>,
         },
         {

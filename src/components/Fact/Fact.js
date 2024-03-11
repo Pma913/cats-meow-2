@@ -6,8 +6,8 @@ import dataCleaner from '../../utilities/dataCleaner';
 import FactCard from '../FactCard/FactCard';
 
 
-const Fact = ({ favFact, removeFav, cats, setCats, catCount, saveCatCount }) => {
-
+const Fact = ({ favFact, removeFav, setCats, cats, catCount, saveCatCount }) => {
+  
   const catSpecs = cats.map(cat => <FactCard 
           key={cat.id}
           details={cat} 
