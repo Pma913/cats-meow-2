@@ -10,7 +10,7 @@ const Card = ({ name, removeFav, id, image, cardSelect, stats }) => {
       <img src={image} alt={`${name} cat`} className="card-thumb" />
       <div className="card-btn-container">
         <img src={trashIcon} className="delete-btn" alt="trash icon" onClick={() => removeFav(id)} />
-        <img src={expandIcon} className="delete-btn" alt="expand icon" onClick={() => cardSelect(stats)} />
+        <img src={expandIcon} className="expand-btn" alt="expand icon" onClick={() => cardSelect(stats)} />
       </div>
       <p className="fav-card-name">{name}</p>
     </div>

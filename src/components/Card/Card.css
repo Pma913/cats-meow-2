@@ -50,7 +50,8 @@
   opacity: 1;
 } 
 
-.delete-btn {
+.delete-btn,
+.expand-btn {
   cursor: pointer;
   width: 35px;
   padding-top: 5px;
