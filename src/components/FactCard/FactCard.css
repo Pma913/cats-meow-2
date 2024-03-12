@@ -14,6 +14,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  height: 100%;
 }
 
 .fact-img {
@@ -25,8 +26,13 @@
   min-height: 90%;
 }
 
+.name {
+  font-size: xxx-large;
+  font-weight: 900;
+  margin-left: 20px;
+}
+
 .fact,
-.name,
 .dog-friendly,
 .energy-level,
 .affection-level,
@@ -77,7 +83,7 @@
   }
 
   .name {
-    margin-right: unset;
+    margin: 5px;
     top: 0;
     left: 0;
     z-index: 1;
