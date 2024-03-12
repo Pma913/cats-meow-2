@@ -29,7 +29,9 @@
 .name {
   font-size: xxx-large;
   font-weight: 900;
-  margin-left: 20px;
+  margin: 48px 0px 20px 20px;
+  display: flex;
+  justify-content: space-between;
 }
 
 .fact,
@@ -45,8 +47,9 @@
 }
 
 .vote-icon {
-  width: 80px;
+  width: 49px;
   z-index: -1;
+  margin-left: 15px;
 }
 
 .vote-icon-container {
