@@ -4,6 +4,7 @@ import { getCatPhotos } from '../../utilities/api-call';
 import PropTypes from 'prop-types'; 
 import dataCleaner from '../../utilities/dataCleaner';
 import FactCard from '../FactCard/FactCard';
+import arrow from '../../utilities/arrow-icon.png';
 
 
 const Fact = ({ favFact, removeFav, setCats, cats, catCount, saveCatCount }) => {
@@ -31,20 +32,26 @@ const Fact = ({ favFact, removeFav, setCats, cats, catCount, saveCatCount }) => 
 
   return (
     <section className="fact-page">
-      <p className={catCount > 0 ? "arrow-container" : "inactive-container"} onClick={() => {
+      <img className={catCount > 0 ? "arrow-left" : "inactive-arrow-left"} 
+        src={arrow}
+        alt='arrow left icon'
+        onClick={() => {
         if (catCount > 0) {
           saveCatCount(catCount -= 1)
         }
-      }}><i className={catCount > 0 ? "arrow left" : "arrow left inactive"}></i></p>
+      }} />
 
       {catSpecs[catCount]}
       
-      <p className="arrow-container" onClick={() => {
+      <img className="arrow-right" 
+        src={arrow}
+        alt='arrow right icon'
+        onClick={() => {
         if (catCount === catSpecs.length - 2) {
           fetchFact();
         }
         saveCatCount(catCount += 1)
-      }}><i className="arrow right"></i></p>
+      }} />
     </section>
   )
 };

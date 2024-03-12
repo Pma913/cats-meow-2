@@ -30,6 +30,8 @@ const FactCard = ({ details, favFact, removeFav }) => {
       </div>
       <img className="fact-img" src={details.image}
       alt={`A ${details.name} cat`} />
+      <div className="arrow-box-right"></div>
+      <div className="arrow-box-left"></div>
     </div>
   )
 }
