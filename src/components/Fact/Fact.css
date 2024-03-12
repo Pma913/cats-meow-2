@@ -17,7 +17,9 @@
 
 .arrow-right {
   -webkit-transform: scaleX(-1);
-  transform: scaleX(-1)
+  transform: scaleX(-1);
+  right: 50%;
+  margin-right: 20px;
 }
 
 .inactive-arrow-left,
@@ -25,10 +27,8 @@
 .arrow-right {
   width: 66px;
   height: 66px;
-  border-radius: 50px; 
-  margin: 20px;
-  -webkit-filter: invert(1);
-  filter: invert(1)
+  position: absolute;
+  bottom: 0%;
 }
 
 .arrow-left,
@@ -49,20 +49,6 @@
 
 .inactive-container:hover {
   cursor: default;
-}
-
-.right {
-  transform: rotate(-45deg);
-  -webkit-transform: rotate(-45deg);
-  right: 30px;
-  bottom: 18px;
-}
-
-.left {
-  transform: rotate(135deg);
-  -webkit-transform: rotate(135deg);
-  left: 30px;
-  bottom: 18px;
 }
 
 .signals {
@@ -86,19 +72,20 @@
   .inactive-arrow-left,
   .arrow-left,
   .arrow-right {
-    position: absolute;
-    bottom: 4.9%;
+    bottom: 0%;
     z-index: 1;
-    -webkit-filter: invert(0);
-    filter: invert(0)
+    background-color: rgba(255, 255, 255, 0.5);
+    border-bottom-left-radius: 15px;
+    border-top-right-radius: 15px;
   }
 
   .inactive-arrow-left,
   .arrow-left {
-    left: 9.3%;
+    left: 0%;
   }
 
   .arrow-right {
-    right: 9.3%;
+    right: 0%;
+    margin: unset;
   }
 }

@@ -17,10 +17,12 @@
 }
 
 .fact-img {
-  width: 50%;
+  min-width: 50%;
   margin: 20px;
   border-radius: 15px;
   object-fit: cover;
+  max-height: 90%;
+  min-height: 90%;
 }
 
 .fact,

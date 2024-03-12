@@ -3,7 +3,7 @@ import thumbsUpGold from '../../utilities/thumbs-up-gold.PNG';
 import './FactCard.css';
 import { useState } from 'react';
 
-const FactCard = ({ details, favFact, removeFav }) => {
+const FactCard = ({ details, favFact, removeFav, leftArrow, rightArrow }) => {
 
   const [favorited, setFavorited] = useState(false);
 
@@ -27,11 +27,12 @@ const FactCard = ({ details, favFact, removeFav }) => {
             }}/>
           </div>
         </div>
+        
       </div>
       <img className="fact-img" src={details.image}
       alt={`A ${details.name} cat`} />
-      <div className="arrow-box-right"></div>
-      <div className="arrow-box-left"></div>
+      {leftArrow}
+      {rightArrow}
     </div>
   )
 }

@@ -9,13 +9,6 @@ import arrow from '../../utilities/arrow-icon.png';
 
 const Fact = ({ favFact, removeFav, setCats, cats, catCount, saveCatCount }) => {
   
-  const catSpecs = cats.map(cat => <FactCard 
-          key={cat.id}
-          details={cat} 
-          favFact={favFact}
-          removeFav={removeFav}
-        />);
-
   const fetchFact = () => {
     getCatPhotos()
       .then(res => {
@@ -27,12 +20,7 @@ const Fact = ({ favFact, removeFav, setCats, cats, catCount, saveCatCount }) => 
       })
   }
 
-  useEffect(()=> {
-  },[favFact, removeFav])
-
-  return (
-    <section className="fact-page">
-      <img className={catCount > 0 ? "arrow-left" : "inactive-arrow-left"} 
+  const leftArrow = <img className={catCount > 0 ? "arrow-left" : "inactive-arrow-left"} 
         src={arrow}
         alt='arrow left icon'
         onClick={() => {
@@ -41,9 +29,7 @@ const Fact = ({ favFact, removeFav, setCats, cats, catCount, saveCatCount }) => 
         }
       }} />
 
-      {catSpecs[catCount]}
-      
-      <img className="arrow-right" 
+  const rightArrow = <img className="arrow-right" 
         src={arrow}
         alt='arrow right icon'
         onClick={() => {
@@ -52,6 +38,26 @@ const Fact = ({ favFact, removeFav, setCats, cats, catCount, saveCatCount }) => 
         }
         saveCatCount(catCount += 1)
       }} />
+
+  const catSpecs = cats.map(cat => <FactCard 
+          key={cat.id}
+          details={cat} 
+          favFact={favFact}
+          removeFav={removeFav}
+          leftArrow={leftArrow}
+          rightArrow={rightArrow}
+        />);
+
+  useEffect(()=> {
+  },[favFact, removeFav])
+
+  return (
+    <section className="fact-page">
+      
+
+      {catSpecs[catCount]}
+      
+      
     </section>
   )
 };
