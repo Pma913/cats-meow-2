@@ -14,6 +14,7 @@ const dataCleaner = (catApiData) => {
       temperament: cat.breeds[0].temperament,
       vcaUrl: cat.breeds[0].vcahospitals_url,
       wikiUrl: cat.breeds[0].wikipedia_url,
+      favorited: false,
     }
   })
 }

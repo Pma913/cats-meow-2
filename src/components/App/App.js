@@ -32,11 +32,27 @@ const App = () => {
   const favoriteFact = (currentFact) => {
     const noDuplicate = favoritedFacts.every(fact => fact.id !== currentFact.id)
     if (noDuplicate) {
+      currentFact.favorited = true;
       setFavoritedFacts([...favoritedFacts, currentFact])
+      const updatedCats = cats.map((cat) => {
+        if (cat.id === currentFact.id) {
+          return currentFact
+        }
+        return cat
+      });
+      setCats([...updatedCats])
     }
   }
 
   const removeFav = (id) => {
+    const updatedCats = cats.map((cat) => {
+        if (cat.id === id) {
+          cat.favorited = false;
+          return cat
+        }
+        return cat
+      });
+    setCats([...updatedCats])
     const newFavs = favoritedFacts.filter(fact => fact.id !== id)
     setFavoritedFacts(newFavs)
   }
