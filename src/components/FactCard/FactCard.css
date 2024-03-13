@@ -30,9 +30,13 @@
 .name {
   font-size: xxx-large;
   font-weight: 900;
-  margin: 48px 0px 20px 20px;
+  margin-left: 20px;
+}
+
+.name-fav-con {
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
 
 .fact,
@@ -79,19 +83,17 @@
     position: relative;
   }
 
-  .name,
-  .vote-icon-container {
+  .name-fav-con {
     position: absolute;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    background-color: rgba(255, 255, 255, 0.5);
+    width: 100%;
+    left: 0;
   }
 
   .vote-icon-container {
-    display: flex;
-    justify-content: flex-end;
-    width: 100%;
-    background-color: rgba(255, 255, 255, 0.5);
-    left: 0px;
-    border-top-left-radius: 15px;
-    border-top-right-radius: 15px;
+    margin-right: 5px; 
   }
 
   .name {
