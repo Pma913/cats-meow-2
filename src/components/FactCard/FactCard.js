@@ -1,5 +1,3 @@
-import thumbsUp from '../../utilities/thumbs-up.png';
-import thumbsUpGold from '../../utilities/thumbs-up-gold.PNG';
 import './FactCard.css';
 import { useState } from 'react';
 import heart from '../../utilities/heart.png';
