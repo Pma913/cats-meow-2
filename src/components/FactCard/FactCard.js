@@ -2,6 +2,7 @@ import thumbsUp from '../../utilities/thumbs-up.png';
 import thumbsUpGold from '../../utilities/thumbs-up-gold.PNG';
 import './FactCard.css';
 import { useState } from 'react';
+import heart from '../../utilities/heart.png';
 
 const FactCard = ({ details, favFact, removeFav, leftArrow, rightArrow }) => {
 
@@ -9,7 +10,7 @@ const FactCard = ({ details, favFact, removeFav, leftArrow, rightArrow }) => {
 
   const like = <div className="button-container">
           <div className="vote-icon-container">
-            <img src={favorited ? thumbsUpGold : thumbsUp} alt="favorite button" className="vote-icon fav" onClick={() => {
+            <img src={heart} alt="favorite button" className={favorited ? "vote-icon fav" : "vote-icon"} onClick={() => {
               setFavorited(!favorited);
               favFact(details);
             }}/>
