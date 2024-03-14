@@ -47,7 +47,7 @@
 .link {
   margin: 5px;
   font-size: large;
-  font-weight: 500;
+  font-weight: 600;
 }
 
 .link:hover {
@@ -79,6 +79,10 @@
 @media (max-width: 584px) {
   .app-title {
     text-align: center;
+  }
+
+  .logo {
+    display: none;
   }
 
   .header {
