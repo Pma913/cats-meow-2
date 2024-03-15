@@ -1,8 +1,15 @@
 import './ExpandedCard.css';
+import { useState } from 'react';
 import cancelIcon from '../../utilities/x.svg';
 import expandArrow from '../../utilities/expand-arrow.png';
 
 const ExpandedCard = ({ stats, removeCard }) => {
+
+  const [dropdown, setDropdown] = useState(false)
+
+  const triggerDropdown = () => {
+    setDropdown(!dropdown)
+  }
   
   return (
     <div className="expanded-background" onClick={(event) => {
@@ -17,9 +24,9 @@ const ExpandedCard = ({ stats, removeCard }) => {
         <div className="stats-area">
           <div className="stats-column-1">
             <h4 className="exp-name">{stats.name}</h4>
-            <img src={expandArrow} alt="expand-stats" className="stats-dropdown" />
+            <img src={expandArrow} alt="expand-stats" className="stats-dropdown" onClick={triggerDropdown}/>
           </div>
-          <div className="stats-column-2">
+          <div className={dropdown ? "stats-column-2" : "stats-column-2 hide-stats"}>
             <p className="exp-description drop">{`Description: ${stats.description}`}</p>
             <p className="exp-stats-title">Stats</p>
             <p className="exp-dogFriendly">{`Dog Friendly: ${stats.dogFriendly}`}</p>

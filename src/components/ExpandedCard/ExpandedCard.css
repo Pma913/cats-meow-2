@@ -61,10 +61,11 @@
 .exp-name {
   font-weight: 900;
   font-size: xx-large;
-  margin: 10px 0 30px 10px;
+  margin-left: 10px;
 }
 
 .stats-dropdown {
+  display: none;
   width: 25px;
   height: 25px;
   margin: 10px 10px 30px;
@@ -72,6 +73,18 @@
 }
 
 @media (max-width: 1110px) {
+  .hide-stats {
+    display: none;
+  }
+
+  .stats-dropdown {
+    display: block
+  }
+
+  .exp-name {
+    margin: 10px 0 30px 10px;
+  }
+
   .expanded-image-container,
   .expanded-image {
     width: 100%;
@@ -102,7 +115,6 @@
   }
 
   .stats-column-2 {
-    display: none;
     width: 27%;
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
