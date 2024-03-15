@@ -1,8 +1,12 @@
 .fav-card-display {
-  height: 50em;
-  background-color: salmon;
+  background-color: rgb(0, 0, 0);
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   align-content: flex-start;
+  /* position: relative; */
+}
+
+.no-ideas {
+  color: white;
 }

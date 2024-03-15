@@ -1,26 +1,56 @@
 .hero {
   height: 39em;
+  position: relative;
 }
 
 .hero-img {
-  position: relative;
   width: 100%;
   overflow: hidden;
   height: 39em;
   object-fit: cover;
 }
 
+.home-btn-con {
+  position: absolute;
+  width: 50%;
+  display: flex;
+  justify-content: space-around;
+  bottom: 0;
+  left: 25%;
+  background-color: rgba(255, 255, 255, 0.5);
+  height: 12%;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+  align-items: center;
+}
+
 .fact-btn,
 .fav-btn {
-  position: absolute;
-  bottom: 22%;
+  bottom: 2%;
   cursor: pointer;
-  border-radius: 10px;
+  border-radius: 27px;
   width: 15%;
   height: 5%;
-  background-color: brown;
+  background-color: #4b5d67;
   border: 0;
+  color: black;
+  font-weight: 800;
+  width: 150%;
+  height: 35px;
+}
+
+.fact-btn:hover,
+.fav-btn:hover {
+  background-color: #262a2d;
+  border-bottom: solid black 4px;
   color: white;
+}
+
+.fact-btn:active,
+.fav-btn:active {
+  background-color: #ffffff;
+  border-bottom: 0px;
+  color: black;
 }
 
 .fact-btn {
@@ -42,8 +72,6 @@
 @media (max-width: 750px) {
   .fact-btn,
   .fav-btn {
-    position: absolute;
-    bottom: 5px;
     height: 25px;
   }
 

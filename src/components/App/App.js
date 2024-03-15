@@ -1,29 +1,64 @@
 import './App.css';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Home from '../Home/Home';
-import Fact, { factLoader } from '../Fact/Fact';
+import Fact from '../Fact/Fact';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import Favorites from '../Favorites/Favorites';
 import Error from '../Error/Error';
 import RootLayout from '../../utilities/RootLayout';
+import dataCleaner from '../../utilities/dataCleaner';
+import { getCatPhotos } from '../../utilities/api-call';
 
 const App = () => {
-  const [favorites, setFavorites] = useState(JSON.parse(sessionStorage.getItem('allFavorites')) || []);
+  const [favoritedFacts, setFavoritedFacts] = useState([]);
+  const [cats, setCats] = useState([]);
+  const [count, setCount] = useState(0);
+  const [err, setErr] = useState()
+
+  useEffect(() => {
+    if (cats.length === 0) {
+      getCatPhotos()
+      .then(res => {
+        setCats(dataCleaner(res))
+      })
+      .catch(err => {
+        console.log(err)
+        setErr(err)
+        
+      })
+    }
+  },[cats])
 
   const favoriteFact = (currentFact) => {
-    const noDuplicate = favorites.every(fact => fact.fact !== currentFact.fact)
-    
+    const noDuplicate = favoritedFacts.every(fact => fact.id !== currentFact.id)
     if (noDuplicate) {
-      setFavorites([...favorites, currentFact])
-      sessionStorage.setItem('allFavorites', JSON.stringify([...favorites, currentFact]))
+      currentFact.favorited = true;
+      setFavoritedFacts([...favoritedFacts, currentFact])
+      const updatedCats = cats.map((cat) => {
+        if (cat.id === currentFact.id) {
+          return currentFact
+        }
+        return cat
+      });
+      setCats([...updatedCats])
     }
   }
 
   const removeFav = (id) => {
-    sessionStorage.removeItem('allFavorites')
-    const newFavs = favorites.filter(fact => fact.id !== id)
-    setFavorites(newFavs)
-    sessionStorage.setItem('allFavorites', JSON.stringify(newFavs))
+    const updatedCats = cats.map((cat) => {
+        if (cat.id === id) {
+          cat.favorited = false;
+          return cat
+        }
+        return cat
+      });
+    setCats([...updatedCats])
+    const newFavs = favoritedFacts.filter(fact => fact.id !== id)
+    setFavoritedFacts(newFavs)
+  }
+
+  const addData = (data) => {
+    setCats([...cats, ...data])
   }
 
   const routes = createBrowserRouter([
@@ -38,17 +73,25 @@ const App = () => {
         },
         {
           path: "/fact",
-          element: <Fact favFact={favoriteFact} />,
-          loader: factLoader
+          element: <Fact 
+            favFact={favoriteFact}
+            removeFav={removeFav} 
+            setCats={setCats} 
+            cats={cats} 
+            addData={addData} 
+            catCount={count}
+            err={err}
+            setErr={err}
+            saveCatCount={setCount}/>,
         },
         {
           path: "/favorites",
-          element: <Favorites removeFav={removeFav} favs={favorites} />
+          element: <Favorites removeFav={removeFav} favs={favoritedFacts} />
         }
       ]
     }
   ])
-  
+
   return (
     <RouterProvider router={routes} />
   )

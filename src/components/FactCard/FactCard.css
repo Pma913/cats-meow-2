@@ -1,0 +1,137 @@
+.fact-display {
+  display: flex;
+  width: 80%;
+  color: black;
+  align-items: center;
+  background-color: rgb(255, 255, 255);
+  margin: 30px 0;
+  border-radius: 19px;
+  position: relative;
+  height: 75vh;
+}
+
+.cat-specs {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+}
+
+.fact-img {
+  min-width: 50%;
+  margin: 20px;
+  border-radius: 15px;
+  object-fit: cover;
+  max-height: 90%;
+  min-height: 90%;
+  box-shadow: 0px 9px 9px black;
+}
+
+.name {
+  font-size: xxx-large;
+  font-weight: 900;
+  margin-left: 20px;
+}
+
+.name-fav-con {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.fact,
+.dog-friendly,
+.energy-level,
+.affection-level,
+.origin,
+.temperament {
+  font-size: large;
+  font-weight: 600;
+  overflow: scroll;
+  margin-left: 20px;
+}
+
+.vote-icon {
+  width: 49px;
+  z-index: -1;
+  cursor: pointer;
+}
+
+.vote-icon-container {
+  height: 49px;
+  background-color: lightgrey;
+  border-radius: 50px;
+  box-shadow: 0px 5px 3px black;
+}
+
+.fav {
+  background-color: 	#3d85c6;
+  border-radius: 50px;
+}
+
+@media (max-width: 1252px) {
+  .fact,
+  .temperament,
+  .affection-level,
+  .energy-level,
+  .dog-friendly,
+  .origin {
+    display: none;
+  }
+
+  .fact-display {
+    position: relative;
+  }
+
+  .name-fav-con {
+    position: absolute;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    background-color: rgba(255, 255, 255, 0.5);
+    width: 100%;
+    left: 0;
+  }
+
+  .vote-icon-container {
+    margin-right: 5px; 
+  }
+
+  .name {
+    margin: 5px;
+    top: 0;
+    left: 0;
+    z-index: 1;
+  }
+
+  .vote-icon {
+    z-index: 0;
+  }
+
+  .fact-img {
+    width: 100%;
+    min-height: 100%;
+    max-height: 100%;
+    margin: unset;
+  }
+
+  .arrow-box-right,
+  .arrow-box-left {
+    position: absolute;
+    background-color: rgba(255, 255, 255, 0.5);
+    width: 10%;
+    height: 12%;
+    bottom: 0%;
+  }
+
+  .arrow-box-right {
+    right: 0%;
+    border-bottom-right-radius: 15px;
+    border-top-left-radius: 15px;
+  }
+
+  .arrow-box-left {
+    left: 0%;
+    border-bottom-left-radius: 15px;
+    border-top-right-radius: 15px;
+  }
+}

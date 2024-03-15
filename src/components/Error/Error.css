@@ -8,6 +8,11 @@
   width: 65em;
 }
 
+.error-message {
+  color: white;
+  text-align: center;
+}
+
 @media (max-width: 847px) {
   .error-img {
     width: 100%;

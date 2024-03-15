@@ -1,57 +1,69 @@
-import React, { useState } from 'react';
+import React, { useEffect } from 'react';
 import './Fact.css';
-import getCatFacts from '../../utilities/api-call';
+import { getCatPhotos } from '../../utilities/api-call';
 import PropTypes from 'prop-types'; 
-import { useLoaderData } from 'react-router-dom';
+import dataCleaner from '../../utilities/dataCleaner';
+import FactCard from '../FactCard/FactCard';
+import arrow from '../../utilities/arrow-icon.png';
 
-const Fact = ({ favFact }) => {
-  const randFact = useLoaderData()
-  const savedFact = JSON.parse(sessionStorage.getItem('currentFact'))
 
-  const [currentFact, setCurrentFact] = useState(savedFact || randFact);
-
-  const setFact = (fact) => {
-    setCurrentFact({fact: fact});
-    sessionStorage.setItem('currentFact', JSON.stringify({fact: fact}))
-  }
-
+const Fact = ({ favFact, removeFav, setCats, cats, catCount, saveCatCount }) => {
+  
   const fetchFact = () => {
-    getCatFacts('https://catfact.ninja/fact')
-      .then(data => {
-        setFact(data.fact);
+    getCatPhotos()
+      .then(res => {
+        const cleanedDetails = dataCleaner(res);
+        setCats([...cats, ...cleanedDetails]);
+      })
+      .catch(err => {
+        console.log(err)
       })
   }
 
+  const leftArrow = <img className={catCount > 0 ? "arrow-left" : "inactive-arrow-left"} 
+        src={arrow}
+        alt='arrow left icon'
+        onClick={() => {
+        if (catCount > 0) {
+          saveCatCount(catCount -= 1)
+        }
+      }} />
+
+  const rightArrow = <img className="arrow-right" 
+        src={arrow}
+        alt='arrow right icon'
+        onClick={() => {
+        if (catCount === catSpecs.length - 2) {
+          fetchFact();
+        }
+        saveCatCount(catCount += 1)
+      }} />
+
+  const catSpecs = cats.map(cat => <FactCard 
+          key={cat.id}
+          details={cat} 
+          favFact={favFact}
+          removeFav={removeFav}
+          leftArrow={leftArrow}
+          rightArrow={rightArrow}
+        />);
+
+  useEffect(()=> {
+  },[favFact, removeFav])
+
   return (
     <section className="fact-page">
-      <div className="fact-display">
-        <p className="fact">{currentFact.fact}</p>
-        <img className="fact-img" src="https://images.unsplash.com/photo-1526336024174-e58f5cdd8e13?ixlib
-        =rb-4.0.3&ixid
-        =M3wxMjA3fDB8MHxzZWFyY2h8MTJ8fGNhdHN8ZW58MHx8MHx
-        8fDA%3D&auto=format&fit=crop&w=500&q=60"
-        alt="Cat with butterfly on nose" />
-      </div>
-      <div className="button-container">
-        <button className="fav-card-btn" onClick={() => {
-          favFact({fact: currentFact.fact || randFact.fact, id: Date.now()})
-        }}>Favorite</button>
+      
 
-        <button className="new-fact-btn" onClick={fetchFact}>New Fact</button>
-      </div>
+      {catSpecs[catCount]}
+      
+      
     </section>
   )
 };
 
 export default Fact;
 
-export const factLoader = async () => {
-  const res = await fetch('https://catfact.ninja/fact')
-
-  return res.json()
-}
-
 Fact.propTypes = {
-  randFact: PropTypes.string,
   favFact: PropTypes.func.isRequired
 }
