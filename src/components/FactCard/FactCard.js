@@ -1,5 +1,4 @@
 import './FactCard.css';
-import { useState } from 'react';
 import heart from '../../utilities/heart.png';
 
 const FactCard = ({ details, favFact, removeFav, leftArrow, rightArrow }) => {
