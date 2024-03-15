@@ -28,14 +28,17 @@
 
 .app-title {
   font-size: xxx-large;
+  transition: text-shadow 0.56s ease-in-out;
 }
 
 .app-title:hover {
-  text-shadow: 2px 0px 20px #8d9da1
+  text-shadow: #ffffbf 0 0 20px, 
+    #6effe4 0 0 40px;
 }
 
 .app-title:active {
   text-shadow: unset;
+  transition: unset;
 }
 
 .link,
