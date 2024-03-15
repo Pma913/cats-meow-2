@@ -22,22 +22,24 @@ const ExpandedCard = ({ stats, removeCard }) => {
           <img className="expanded-image" src={stats.image} alt={`${stats.name} cat`} />
         </div>
         <div className="stats-area">
-          <div className="stats-column-1">
-            <h4 className="exp-name">{stats.name}</h4>
-            <img src={expandArrow} alt="expand-stats" className="stats-dropdown" onClick={triggerDropdown}/>
-          </div>
+          <div className={dropdown ? "stats-column-con-active" : "stats-column-con"}>
+            <div className={dropdown ? "stats-column-1 active-drop" : "stats-column-1"}>
+              <h4 className="exp-name">{stats.name}</h4>
+              <img src={expandArrow} alt="expand-stats" className={dropdown ? "stats-dropup" : "stats-dropdown"} onClick={triggerDropdown}/>
+            </div>
           <div className={dropdown ? "stats-column-2" : "stats-column-2 hide-stats"}>
             <p className="exp-description drop">{`Description: ${stats.description}`}</p>
-            <p className="exp-stats-title">Stats</p>
-            <p className="exp-dogFriendly">{`Dog Friendly: ${stats.dogFriendly}`}</p>
-            <p className="exp-energyLevel">{`Energy Level: ${stats.energyLevel}`}</p>
-            <p className="exp-origin">{`Origin: ${stats.origin}`}</p>
-            <p className="exp-temperament">{`Temperament: ${stats.temperament}`}</p>
-            <p className="exp-links-title">External Links</p>
+            <p className="exp-stats-title drop">Stats</p>
+            <p className="exp-dogFriendly drop">{`Dog Friendly: ${stats.dogFriendly}`}</p>
+            <p className="exp-energyLevel drop">{`Energy Level: ${stats.energyLevel}`}</p>
+            <p className="exp-origin drop">{`Origin: ${stats.origin}`}</p>
+            <p className="exp-temperament drop">{`Temperament: ${stats.temperament}`}</p>
+            <p className="exp-links-title drop">External Links</p>
             <div className="exp-links-container">
               <a className="vca-link" href={stats.vcaUrl}>VCA</a>
               <a className="wiki-link" href={stats.wikiUrl}>Wikipedia</a>
             </div>
+          </div>
           </div>
           <img className="remove-card" src={cancelIcon} alt="" onClick={removeCard} />
         </div>

@@ -64,21 +64,46 @@
   margin-left: 10px;
 }
 
-.stats-dropdown {
+.stats-dropdown,
+.stats-dropup {
   display: none;
-  width: 25px;
-  height: 25px;
-  margin: 10px 10px 30px;
-  transform: rotate(90deg);
+}
+
+.wiki-link {
+  margin-right: 20px;
 }
 
 @media (max-width: 1110px) {
-  .hide-stats {
-    display: none;
+  .stats-column-con {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .stats-column-con-active {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 35%;
   }
 
   .stats-dropdown {
-    display: block
+    display: block;
+    width: 25px;
+    height: 25px;
+    margin: 10px 10px 30px;
+    transform: rotate(90deg);
+  }
+
+  .stats-dropup {
+    display: block;
+    transform: rotate(-90deg);
+    width: 25px;
+    height: 25px;
+    margin: 10px 10px 30px;
+  }
+
+  .hide-stats {
+    display: none;
   }
 
   .exp-name {
@@ -114,20 +139,20 @@
     background-image: linear-gradient(rgb(255, 255, 255, 0), rgb(255, 255, 255, 1));
   }
 
+  .active-drop {
+    border-bottom-left-radius: unset;
+    border-bottom-right-radius: unset;
+  }
+
   .stats-column-2 {
-    width: 27%;
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
-    padding-left: 10px;
+    width: 100%;
+    background-color: white;
   }
 
-  .stats-column-1,
-  .stats-column-2 {
+  .stats-column-1 {
     background-color: rgba(255, 255, 255, 0.5);
-  }
-
-  .wiki-link {
-    margin-right: 34px;
   }
 
   .exp-description {
@@ -138,10 +163,21 @@
     margin-bottom: 20px;
   }
 
-  @media (max-width: 900px) {
-    .expanded-card {
-      width: 90%;
-      left: 5%;
-    }
+  .drop {
+    margin-left: 10px;
+  }
+
+  .exp-links-container {
+    justify-content: space-around;
+  }
+
+  .wiki-link {
+  margin-right: unset;
+  }
+}
+@media (max-width: 900px) {
+  .expanded-card {
+    width: 90%;
+    left: 5%;
   }
 }
