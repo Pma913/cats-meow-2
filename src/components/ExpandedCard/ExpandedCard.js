@@ -1,5 +1,6 @@
 import './ExpandedCard.css';
 import cancelIcon from '../../utilities/x.svg';
+import expandArrow from '../../utilities/expand-arrow.png';
 
 const ExpandedCard = ({ stats, removeCard }) => {
   
@@ -16,9 +17,10 @@ const ExpandedCard = ({ stats, removeCard }) => {
         <div className="stats-area">
           <div className="stats-column-1">
             <h4 className="exp-name">{stats.name}</h4>
-            <p className="exp-description">{`Description: ${stats.description}`}</p>
+            <img src={expandArrow} alt="expand-stats" className="stats-dropdown" />
           </div>
           <div className="stats-column-2">
+            <p className="exp-description drop">{`Description: ${stats.description}`}</p>
             <p className="exp-stats-title">Stats</p>
             <p className="exp-dogFriendly">{`Dog Friendly: ${stats.dogFriendly}`}</p>
             <p className="exp-energyLevel">{`Energy Level: ${stats.energyLevel}`}</p>

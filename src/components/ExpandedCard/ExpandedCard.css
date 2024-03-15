@@ -61,7 +61,14 @@
 .exp-name {
   font-weight: 900;
   font-size: xx-large;
-  margin: unset;
+  margin: 10px 0 30px 10px;
+}
+
+.stats-dropdown {
+  width: 25px;
+  height: 25px;
+  margin: 10px 10px 30px;
+  transform: rotate(90deg);
 }
 
 @media (max-width: 1110px) {
@@ -78,19 +85,24 @@
   .stats-area {
     position: absolute;
     height: 100%;
+    width: 100%;
     display: flex;
-    flex-direction: column;
+    flex-direction: column-reverse;
     padding: unset;
-    align-items: flex-start;
   }
 
   .stats-column-1 {
-    width: 50%;
-    padding-left: 10px;
-    border-top-left-radius: 10px;
+    width: 100%;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-image: linear-gradient(rgb(255, 255, 255, 0), rgb(255, 255, 255, 1));
   }
 
   .stats-column-2 {
+    display: none;
     width: 27%;
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
@@ -115,11 +127,6 @@
   }
 
   @media (max-width: 900px) {
-    .stats-column-1,
-    .stats-column-2 {
-      width: 97%;
-    }
-
     .expanded-card {
       width: 90%;
       left: 5%;
