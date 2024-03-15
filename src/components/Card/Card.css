@@ -62,3 +62,21 @@
     width: 30%;
   }
 }
+
+@media (max-width: 730px) {
+  .fav-card {
+    width: 50%;
+  }
+}
+
+@media (max-width: 500px) {
+  .fav-card {
+    width: 70%;
+  }
+}
+
+@media (hover: none) {
+  .card-btn-container {
+    opacity: 1;
+  }
+}

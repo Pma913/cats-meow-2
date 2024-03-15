@@ -8,9 +8,9 @@
 .expanded-card {
   position: absolute;
   width: 70%;
-  height: 54%;
+  height: 64%;
   left: 15%;
-  bottom: 35%;
+  bottom: 28%;
   background-color: white;
   border-radius: 10px;
   display: flex;
@@ -49,7 +49,7 @@
 
 .exp-links-container {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-between;
 }
 
 .exp-stats-title,
@@ -62,4 +62,67 @@
   font-weight: 900;
   font-size: xx-large;
   margin: unset;
+}
+
+@media (max-width: 1110px) {
+  .expanded-image-container,
+  .expanded-image {
+    width: 100%;
+  }
+
+  .expanded-image {
+    min-width: 100%;
+    min-height: 100%;
+  }
+
+  .stats-area {
+    position: absolute;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: unset;
+    align-items: flex-start;
+  }
+
+  .stats-column-1 {
+    width: 50%;
+    padding-left: 10px;
+    border-top-left-radius: 10px;
+  }
+
+  .stats-column-2 {
+    width: 27%;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    padding-left: 10px;
+  }
+
+  .stats-column-1,
+  .stats-column-2 {
+    background-color: rgba(255, 255, 255, 0.5);
+  }
+
+  .wiki-link {
+    margin-right: 34px;
+  }
+
+  .exp-description {
+    margin-right: 20px;
+  }
+
+  .exp-links-container {
+    margin-bottom: 20px;
+  }
+
+  @media (max-width: 900px) {
+    .stats-column-1,
+    .stats-column-2 {
+      width: 97%;
+    }
+
+    .expanded-card {
+      width: 90%;
+      left: 5%;
+    }
+  }
 }
