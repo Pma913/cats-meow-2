@@ -6,21 +6,20 @@
 .hero-img {
   width: 100%;
   overflow: hidden;
-  height: 39em;
+  height: 125%;
   object-fit: cover;
 }
 
 @media (max-width: 750px) {
   .hero-img,
   .hero {
-    height: 27em;
     position: relative;
   }  
 }
 
-@media (max-width: 584px) {
+/* @media (max-width: 584px) {
   .hero-img,
   .hero {
     height: 15em;
   } 
-}
+} */

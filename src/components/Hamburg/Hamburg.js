@@ -15,7 +15,7 @@ const Hamburg = () => {
   }
   
   const toggleHidden = () => {
-    hidden === 'hidden' ? setHidden('') : setHidden('hidden');
+    hidden === 'hidden' ? setHidden('reveal') : setHidden('hidden');
   }
 
   return (
