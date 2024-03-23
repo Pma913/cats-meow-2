@@ -13,7 +13,9 @@ The purpose of this application is to fetch data from an api and manipulate it i
 
 
 ## At a glance
-![giph here]()
+![image](src/images/Screenshot%202024-03-22%20at%2010.53.02 PM.png)
+![image](src/images/Screenshot%202024-03-22%20at%2010.52.38 PM.png)
+![image](src/images/Screenshot%202024-03-22%20at%2010.53.16 PM.png)
 
 ## Technologies Used
 - React
