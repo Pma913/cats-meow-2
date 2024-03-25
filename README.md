@@ -32,10 +32,10 @@ The purpose of this application is to fetch data from an api and manipulate it i
 - run `npm start`
 
 ## Winns
-For this project, I really wanted a way to make data persist across page refresh/reloads. I orriginally reached out for local storage which worked, but then I started looking into session storage which appealed to me better since it would allow the data model to maintain updates only as long as the specific tab stayed open. Also it was a new and exciting resource to reach for when creating this project.
+Updating the api from which the application is fetching its data. This new data source, [The Cat API](https://thecatapi.com/) delivers a larger and more complex object upon request which the application cleans up before rendering the final data to the DOM.
 
 ## Challenges
-Getting the bad url path to work for this project was a bit of a challenge for me. I got it to work just by using the * path, but then noticed that the error page was attaching it to the bottom of each page. Did some digging and came up with the Switch routing and implemented that which resulted in successful routing of the error component when a bad url was entered within the application. 
+Reformattig the application to handle the new Cat API took a fair amount of work and basically led to a complete overhaul of the project. 
 
 ## Collaborators
 Patrick Ankiewicz: [github](https://github.com/Pma913) | [linkedin](https://www.linkedin.com/in/patrick-ankiewicz/)
