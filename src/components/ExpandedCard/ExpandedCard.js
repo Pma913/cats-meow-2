@@ -10,6 +10,19 @@ const ExpandedCard = ({ stats, removeCard }) => {
   const triggerDropdown = () => {
     setDropdown(!dropdown)
   }
+
+
+  const description = () => {
+    if (stats.description.length > 200) {
+      let cutDescription = stats.description.slice(0, 200)
+      const lastFullWord = cutDescription.lastIndexOf(' ')
+      return cutDescription.slice(0, lastFullWord) + '...'
+    } else {
+      return stats.description
+    }
+  }
+
+  const readMore = stats.description.length > 250 ? <p className="read-more">Read More</p> : ''
   
   return (
     <div className="expanded-background" onClick={(event) => {
@@ -28,7 +41,7 @@ const ExpandedCard = ({ stats, removeCard }) => {
               <img src={expandArrow} alt="expand-stats" className={dropdown ? "stats-dropup" : "stats-dropdown"} onClick={triggerDropdown}/>
             </div>
           <div className={dropdown ? "stats-column-2" : "stats-column-2 hide-stats"}>
-            <p className="exp-description drop">{`Description: ${stats.description}`}</p>
+            <p className="exp-description drop">{`Description: ${description()}`}{readMore}</p>
             <p className="exp-stats-title drop">Stats</p>
             <p className="exp-dogFriendly drop">{`Dog Friendly: ${stats.dogFriendly}`}</p>
             <p className="exp-energyLevel drop">{`Energy Level: ${stats.energyLevel}`}</p>

@@ -32,15 +32,19 @@ const Favorites = ({ favs, removeFav }) => {
   
   },[selected])
 
-  return (
-    <section className="fav-card-display">
+  if (selected) {
+    return (
+      <ExpandedCard removeCard={deselectCard} stats={selected} />
+    )
+  } else {
+    return (
+      <section className="fav-card-display">
       {!savedCards.length ? 
       <h2 className="no-ideas">No saved ideas yet</h2> :
       savedCards}
-      {selected ? <ExpandedCard removeCard={deselectCard} stats={selected} /> :
-      <></>}
     </section>
-  );
+    )
+  }
 };
 
 export default Favorites;
