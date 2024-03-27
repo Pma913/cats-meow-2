@@ -17,15 +17,8 @@ const FactCard = ({ details, favFact, removeFav, leftArrow, rightArrow }) => {
             </div>
           </div>
           </div>
-          <p className="dog-friendly">{`Dog Friendly: ${details.dogFriendly}`}</p>
-          <p className="energy-level">{`Energy Level: ${details.energyLevel}`}</p>
-          <p className="affection-level">{`Affection Level: ${details.affectionLevel}`}</p>
-          <p className="origin">{`Origin: ${details.origin}`}</p>
-          <p className="temperament">{`Temperaments: ${details.temperament}`}</p>
-          <p className="fact">{`Description: ${details.description}`}</p>
+          <p className="fact">{details.description}</p>
         </div>
-        
-        
       </div>
       <img className="fact-img" src={details.image}
       alt={`A ${details.name} cat`} />
