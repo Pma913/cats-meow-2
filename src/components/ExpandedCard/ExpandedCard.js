@@ -6,10 +6,31 @@ import expandArrow from '../../utilities/expand-arrow.png';
 const ExpandedCard = ({ stats, removeCard }) => {
 
   const [dropdown, setDropdown] = useState(false)
+  const [expandDesc, setExpandDesc] = useState(false)
 
   const triggerDropdown = () => {
     setDropdown(!dropdown)
   }
+
+
+  const description = () => {
+    if (stats.description.length > 200) {
+      let cutDescription = stats.description.slice(0, 200)
+      const lastFullWord = cutDescription.lastIndexOf(' ')
+      return cutDescription.slice(0, lastFullWord) + '...'
+    } else {
+      return stats.description
+    }
+  }
+
+  const toggleRead = expandDesc ? 'Read Less' : 'Read More'
+
+  const readMore = stats.description.length > 200 ? <span className="read-more" onClick={() => {
+      setExpandDesc(!expandDesc)
+    }}>{toggleRead}</span> : ''
+
+  // const readMoreBox = <p className="exp-full-description drop">{stats.description}</p>
+  const fullDescription = stats.description
   
   return (
     <div className="expanded-background" onClick={(event) => {
@@ -28,7 +49,8 @@ const ExpandedCard = ({ stats, removeCard }) => {
               <img src={expandArrow} alt="expand-stats" className={dropdown ? "stats-dropup" : "stats-dropdown"} onClick={triggerDropdown}/>
             </div>
           <div className={dropdown ? "stats-column-2" : "stats-column-2 hide-stats"}>
-            <p className="exp-description drop">{`Description: ${stats.description}`}</p>
+            <p className={expandDesc ? "exp-full-description drop" : "hide-desc"}>{fullDescription}{readMore}</p>
+            <p className="exp-description drop">{`${description()}`}{readMore}</p>
             <p className="exp-stats-title drop">Stats</p>
             <p className="exp-dogFriendly drop">{`Dog Friendly: ${stats.dogFriendly}`}</p>
             <p className="exp-energyLevel drop">{`Energy Level: ${stats.energyLevel}`}</p>
