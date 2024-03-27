@@ -25,7 +25,7 @@ const ExpandedCard = ({ stats, removeCard }) => {
 
   const toggleRead = expandDesc ? 'Read Less' : 'Read More'
 
-  const readMore = stats.description.length > 250 ? <span className="read-more" onClick={() => {
+  const readMore = stats.description.length > 200 ? <span className="read-more" onClick={() => {
       setExpandDesc(!expandDesc)
     }}>{toggleRead}</span> : ''
 
